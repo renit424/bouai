@@ -9,14 +9,14 @@
   <script type=”text/javascript” src="https://api.renitapps.com/jjwd_get.php"></script>
   <script>
     function init() {
-      var map = L.map('map',{zoomControl: false});
+      var map = L.map('map',{zoomControl: false}).setView([37,135], 5);
       mapLink = '<a href="https://openstreetmap.org">OpenStreetMap</a>';
       L.tileLayer(
         'https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
           attribution: 'Map data &copy; ' + mapLink,
           maxZoom: 18
       }).addTo(map);
-      L.control.scale({maxWidth:200,position:'bottomleft',imperial:false}).setView([37,135], 5).addTo(map);
+      L.control.scale({maxWidth:200,position:'bottomleft',imperial:false}).addTo(map);
       L.control.zoom({position:'topright'}).addTo(map);
       function onLocationFound(e) {
           L.marker(e.latlng).addTo(map).bindPopup("現在地").openPopup();
