@@ -6,7 +6,7 @@
   <link rel="stylesheet" href="amedas.css">
   <link rel="stylesheet" href="https://unpkg.com/leaflet@1.4.0/dist/leaflet.css" />
   <script src="https://unpkg.com/leaflet@1.4.0/dist/leaflet.js"></script>
-  <script type=”text/javascript” src="http://renit.starfree.jp/api/jjwd_get.php"></script>
+  <script type=”text/javascript” src="https://api.renitapps.com/jjwd_get.php"></script>
   <script>
     function init() {
       var map = L.map('map',{zoomControl: false});
@@ -39,7 +39,7 @@
           var precip_1h = Number(0);
           var stn_name_ja = "";
           var stn_name_ja_kana = "";
-          const url = 'http://renit.starfree.jp/api/data.json';
+          const url = 'https://api.renitapps.com/data.json';
           
           fetch(url).then(function(response) {
             return response.json();
