@@ -9,7 +9,7 @@
   <script type=”text/javascript” src="http://renit.starfree.jp/api/jjwd_get.php"></script>
   <script>
     function init() {
-      var map = L.map('map',{zoomControl: false}).setView([37,137], 5);
+      var map = L.map('map',{zoomControl: false});
       mapLink = '<a href="https://openstreetmap.org">OpenStreetMap</a>';
       L.tileLayer(
         'https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
@@ -20,6 +20,7 @@
       L.control.zoom({position:'topright'}).addTo(map);
       function onLocationFound(e) {
           L.marker(e.latlng).addTo(map).bindPopup("現在地").openPopup();
+          map.setView([e.latlng], 5);
       }
       function onLocationError(e) {
           alert("現在地を取得できませんでした。" + e.message);
