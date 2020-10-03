@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>台風情報 ビューアー By renit</title>
+    <meta charset="utf-8" />
+    <link rel="stylesheet" href="typhoon.css">
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.4.0/dist/leaflet.css" />
+    <script src="https://unpkg.com/leaflet@1.4.0/dist/leaflet.js"></script>
+    <!--<meta http-equiv="refresh" content="60 URL=">-->
+    <script>
+    var a = 0.0;
+    var b = 0.0;
+    var a2 = 0.0;
+    var b2 = 0.0;
+    function init() {
+      var map = L.map('map');
+      mapLink = '<a href="https://openstreetmap.org">OpenStreetMap</a>';
+      L.tileLayer(
+        'https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+          attribution: 'Map data &copy; ' + mapLink,
+          maxZoom: 18
+        }).addTo(map);
+        var Layer_503 = new Array();
+        Typhoon_01();
+        function Typhoon_01() {
+          var Line_W = 2;
+          const url = 'http://agora.ex.nii.ac.jp/digital-typhoon/json/wnp/202013.ja.json';
+          fetch(url).then(function(response) {
+            return response.json();
+          }).then(function(json) {
+            var len = json['track'].length-1;
+            for(var i=0; i<len; i++) {
+          var myIcon = L.icon({
+            iconUrl: 'https://upload.wikimedia.org/wikipedia/commons/thumb/4/49/Multiplication_Sign.svg/1024px-Multiplication_Sign.svg.png',
+            iconSize: [20, 20]
+          })
+          var marker = L.marker([parseFloat(json.track[i+1].lat), parseFloat(json.track[i+1].long)], {
+            icon: myIcon
+          }).addTo(map)
+          marker.bindPopup("台風名(名称) 台風第" + json.display_name.slice(6) + "<br>日時 " + json.track[i+1].date.slice(0,-3) + "<br>中心位置 " + parseFloat(json.track[i+1].lat) + "N/" + parseFloat(json.track[i+1].long) + "E<br>中心気圧 " + json.track[i+1].p + "hPa<br>最大風速 " + json.track[i+1].w_ms + "m/s (100kt)").openPopup();
+          L.polyline([[parseFloat(json.track[i+1].lat), parseFloat(json.track[i+1].long)],[parseFloat(json.track[i].lat), parseFloat(json.track[i].long)]],{ "color": "red", "weight": 2, "opacity": 1.0})
+          .addTo(map);
+        }
+          var Circle_shape = new Array();
+          var Circle_shape_LAT = new Array();
+          var Circle_shape_LON = new Array();
+          var Circle_shape_RAD = new Array();
+          var Circle_shape_NAM = new Array();
+          var Circle_shape_LNK = new Array();
+          var Circle_strokecol = new Array();
+          var Circle_fillcolor = new Array();
+          var time = document.querySelector('#time');
+          var i = (json['track'].length)-1;
+          console.log(i);
+          time = json.track[i].date;
+          var result = document.querySelector('#result');
+          //中心
+          var long = document.querySelector('#long');
+          var lat = document.querySelector('#lat');
+          a = json.track[i].lat;
+          b = json.track[i].long;
+          map.setView([a,b], 6);
+          console.log(a+b);
+          //強風域
+          if (json.track[i].g !== undefined) {
+          var glat = document.querySelector('#glat');
+          var gradius = document.querySelector('#gradius');
+          var glong = document.querySelector('#glong');
+          Circle_shape_LAT[0] = parseFloat(json.track[i].g.lat.padEnd(4, "0"));
+          Circle_shape_LON[0] = parseFloat(json.track[i].g.long.padEnd(4, "0"));
+          Circle_shape_RAD[0] = parseFloat(json.track[i].g.radius.padEnd(6, "0"));
+          Circle_shape_NAM[0] = "強風域";
+          Circle_shape_LNK[0] = " ";
+          Circle_strokecol[0] = "FFFF00";
+          Circle_fillcolor[0] = "FFFF00";
+          }
+          if (json.track[i].s !== undefined) {
+          Circle_shape_LAT[1] = parseFloat(json.track[i].s.lat.padEnd(4, "0"));
+          Circle_shape_LON[1] = parseFloat(json.track[i].s.long.padEnd(4, "0"));
+          Circle_shape_RAD[1] = parseFloat(json.track[i].s.radius.padEnd(5, "0"));
+          Circle_shape_NAM[1] = "暴風域";
+          Circle_shape_LNK[1] = " ";
+          Circle_strokecol[1] = "FF0000";
+          Circle_fillcolor[1] = "FF0000";
+          }
+          for (i = 0; i <= (Circle_shape_LAT.length - 1); i++) {
+            Circle_shape[i] = L.circle([Circle_shape_LAT[i], Circle_shape_LON[i]], Circle_shape_RAD[i], {
+              color: "#" + Circle_strokecol[i],
+              fillColor: "#" + Circle_fillcolor[i],
+              weight: Line_W,
+              fillopacity: 0.5
+            }).bindPopup(Circle_shape_NAM[i]);
+            Layer_503[i] = Circle_shape[i];
+            Layer_503[i].addTo(map);
+          }
+       const url2 = 'http://agora.ex.nii.ac.jp/digital-typhoon/json/forecast/wnp/202013.ja.json';
+          fetch(url2).then(function(response) {
+            return response.json();
+          }).then(function(json2) {
+            for(var i=0; i<2; i++) {
+              a2 = parseFloat(json2[0].lat)
+              b2 = parseFloat(json2[0].long);
+              console.log(a2,b2);
+              L.polyline([[parseFloat(json2[0].lat), parseFloat(json2[0].long)],[parseFloat(json2[1].lat), parseFloat(json2[1].long)]],{ "color": "red", "weight": 2, "opacity": 1.0}).addTo(map);
+              L.polyline([[parseFloat(json2[1].lat), parseFloat(json2[1].long)],[parseFloat(json2[2].lat), parseFloat(json2[2].long)]],{ "color": "red", "weight": 2, "opacity": 1.0}).addTo(map);
+ 	      	    L.polyline([[parseFloat(a), parseFloat(b)],[parseFloat(a2), parseFloat(b2)]],{ "color": "red", "weight": 2, "opacity": 1.0}).addTo(map);           
+
+              L.marker([json2[2].lat, json2[2].long]).bindPopup("台風名(名称) 台風第" +json.display_name.slice(6)+"<br>日時 "+json2[2].forecast_date.slice(0,-3)+"<br>中心位置 "+parseFloat(json2[2].lat)+ parseFloat(json2[2].long)+"<br>予報円の半径 "+json2[2].radius_km+"<br>分類 "+json2[2].clabel).addTo(map);
+              L.marker([json2[1].lat, json2[1].long]).bindPopup("台風名(名称) 台風第" +json.display_name.slice(6)+"<br>日時 "+json2[1].forecast_date.slice(0,-3)+"<br>中心位置 "+parseFloat(json2[1].lat)+ parseFloat(json2[1].long)+"<br>予報円の半径 "+json2[1].radius_km+"<br>分類 "+json2[1].clabel).addTo(map);
+              L.marker([json2[0].lat, json2[0].long]).bindPopup("台風名(名称) 台風第" +json.display_name.slice(6)+"<br>日時 "+json2[0].forecast_date.slice(0,-3)+"<br>中心位置 "+parseFloat(json2[0].lat)+ parseFloat(json2[0].long)+"<br>予報円の半径 "+json2[0].radius_km+"<br>分類 "+json2[0].clabel).addTo(map);
+            }
+          });
+        });
+    }
+    }
+  </script>
+  </head>
+  <body onload="init()"><script type="text/javascript" src="https://ad.netowl.jp/js/star-php.js"></script><script type="text/javascript" src="https://ad.netowl.jp/js/star-php.js"></script>
+    <div id="map" class="max"></div>
+     <div class="infopanel">
+      <a>あっはああああああああああああああああああああああ</a>
+    </div>
+      </body>
+</html>
