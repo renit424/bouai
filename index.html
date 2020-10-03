@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf8">
+  <title>防災情報Web</title>
+
+  <!-- Global site tag (gtag.js) - Google Analytics -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=UA-129657075-1"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag() { dataLayer.push(arguments); }
+    gtag('js', new Date());
+
+    gtag('config', 'UA-129657075-1');
+  </script>
+
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+    integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+
+  <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"
+    integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n"
+    crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
+    integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo"
+    crossorigin="anonymous"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"
+    integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6"
+    crossorigin="anonymous"></script>
+
+  <link href="style.css" rel="stylesheet">
+</head>
+
+<body>
+  <header id="header">
+    <nav class="navbar navbar-dark bg-dark navbar-expand-lg">
+      <a class="navbar-brand" href="https://renitapps.com/index.html">renitホームページ</a>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarText"
+        aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarText">
+        <ul class="navbar-nav mr-auto">
+          <li class="nav-item active">
+            <a class="nav-link" href="https://renitapps.com/index.html">ホーム</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="http://nicopon.hatenablog.jp/">ブログ</a>
+          </li>
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown"
+              aria-haspopup="true" aria-expanded="false">
+              ソフトウェア
+            </a>
+            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+              <div class="dropdown-divider"></div>
+              <a class="dropdown-item" href="https://github.com/renit0424">GitHubのユーザーページ</a>
+              <a class="dropdown-item" href="https://renitapps.com/link.html">ソフト配布ページ</a>
+            </div>
+          <li class="nav-item">
+            <a class="nav-link" href="http://bousai.renitapps.com/">防災情報Web<span class="sr-only">(現在)</span></a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="https://renitapps.com/profiles.html">自己紹介</a>
+          </li>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="https://renitapps.com/contacts.html">お問い合わせ</a>
+          </li>
+        </ul>
+      </div>
+    </nav>
+  </header>
+  <div id="nonheader">
+    <nav aria-label="breadcrumb">
+      <ol class="breadcrumb">
+        <li class="breadcrumb-item active" aria-current="page">ホーム</li>
+      </ol>
+    </nav>
+    <div class="container">
+      <div class="row">
+        <div class="col-12 col-sm-12 col-md-12 col-lg-9 col-xl-9">
+          <div id="maincontent">
+            <h3>防災情報Web</h3>
+            <hr />
+            <h5>台風情報(開発中)</h5>
+            <hr />
+            <p>台風の現在の位置とその後の進路を気象庁XMLより取得した情報を<br>
+            活用して簡単にみれるようにしたものです。<br>
+            台風情報は<a href = "http://bousai.renitapps.com/typhoon/typhoon.html">こちら</a>から。</p>
+            <h5>アメダスをひと目で。(開発中)</h5>
+            <hr />
+            <p>全国のアメダスの情報をJJWD(※1)のAPIを活用し、<br>
+            地図を簡単に誰でもみれるように作ってみようといったものです。<br>
+            アメダスをひと目で。は<a href = "http://bousai.renitapps.com/amedas/amedas.html">こちら</a>から。<br>
+            </p>
+            JJWDとは
+            <blockquote>
+                <p>気象庁から CSV 形式で公開されているアメダス観測地点の最新気象データを JSON 形式に変換して提供するAPIサービスです。
+                機械判読性が高く、日本語に依存せず、なおかつ登録不要で利用できます。</p>
+            </blockquote>
+            <a>詳しくは<a href = "http://jjwd.info/">こちら</a>から。</a>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <footer>
+      <hr />
+      <p class="text-center">Copyright &copy; 2020 renit.</p>
+    </footer>
+  </div>
+</body>
+</html>
