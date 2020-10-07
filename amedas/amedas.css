@@ -15,8 +15,8 @@ span.font_size {
     position: fixed; /* 画面上に絶対座標で固定 */
     top: 10px; /* 画面 上からの距離 */
     left: 10px; /* 画面左からの距離 */
-    width: 250px; /* パネルの横幅 */
-    height: 150px; /* パネルの縦幅 */
+    width: 225px; /* パネルの横幅 */
+    height: 100px; /* パネルの縦幅 */
     background-color: white; /* 背景色 */
     color: black; /* 文字色 */
     padding: 2px; /* 背景端からの距離 */
