@@ -19,7 +19,7 @@
       L.control.scale({maxWidth:200,position:'bottomleft',imperial:false}).addTo(map);
       L.control.zoom({position:'topright'}).addTo(map);
       function onLocationFound(e) {
-          L.marker(e.latlng).addTo(map).bindPopup("現在地").openPopup();
+          var circle =  L.circle([e.latlng], {radius: 2800, color: "#1e90ff", fill: true, fillOpacity:1.0, weight: 1 }).bindPopup("<span class=font_size>現在地</span>").addTo(map);
       }
       function onLocationError(e) {
           alert("現在地を取得できませんでした。" + e.message);
