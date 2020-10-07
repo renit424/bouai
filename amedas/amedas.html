@@ -52,7 +52,7 @@
                 var time = json.stations[i].updatedAt;
                 if(Number(json.stations[i].preall) != null){
                   precip_1h = Number(json.stations[i].preall.precip_1h);
-                  console.log(precip_1h);
+                  console.log("aaa"+precip_1h);
                   for(let n in i){   
                   var array = [Number(json.stations[n].preall.precip_1h)];
 
@@ -61,7 +61,7 @@
                   return (a < b ? 1 : -1);
                   }
                   );
-                  console.log(array);
+                  console.log("bbb"+array);
                   }
                   var up = document.getElementById("up");
                   up.innerHTML = "";
