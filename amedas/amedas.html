@@ -38,7 +38,7 @@
           var precip_1h = Number(0);
           var stn_name_ja = "";
           var stn_name_ja_kana = "";
-          const url = 'https://api.renitapps.com/data.json';
+          const url = 'https://api.renitapps.com/jjwd_get.php';
           fetch(url).then(function(response) {
             return response.json();
           }).then(function(json) {
