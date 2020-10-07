@@ -53,34 +53,44 @@
                 if(Number(json.stations[i].preall) != null){
                   precip_1h = Number(json.stations[i].preall.precip_1h);
                   console.log(precip_1h);
+                  for(let n in i){   
+                  var array = [Number(json.stations[n].preall.precip_1h)];
+
+                  array.sort(
+                    function(a,b){
+                  return (a < b ? 1 : -1);
+                  }
+                  );
+                  console.log(array);
+                  }
                   var up = document.getElementById("up");
-                  up.innerHTML = " ";
+                  up.innerHTML = "";
                   if(precip_1h >= 80.0){
-                    var circle =  L.circle([lat,lng], {radius: 2400, color: "#9800af", fill: true, fillOpacity:1.0, weight: 0 }).bindPopup("<span class=font_size>"+stn_name_ja+"("+stn_name_ja_kana+")\n"+"1時間降水量\n"+precip_1h+"mm</span>").addTo(map);
+                    var circle =  L.circle([lat,lng], {radius: 2400, color: "#9800af", fill: true, fillOpacity:1.0, weight: 0 }).bindPopup("<span class=font_size>"+stn_name_ja+"("+stn_name_ja_kana+")\n"+precip_1h+"mm</span>").addTo(map);
                   }
                   else if(precip_1h >= 50.0&&precip_1h < 80.0){
-                    var circle =  L.circle([lat,lng], {radius: 2400, color: "#f20000", fill: true, fillOpacity:1.0, weight: 0 }).bindPopup("<span class=font_size>"+stn_name_ja+"("+stn_name_ja_kana+")\n"+"1時間降水量\n"+precip_1h+"mm</span>").addTo(map);
+                    var circle =  L.circle([lat,lng], {radius: 2400, color: "#f20000", fill: true, fillOpacity:1.0, weight: 0 }).bindPopup("<span class=font_size>"+stn_name_ja+"("+stn_name_ja_kana+")\n"+precip_1h+"mm</span>").addTo(map);
                   }
                   else if(precip_1h >= 30.0&&precip_1h < 50.0){
-                    var circle =  L.circle([lat,lng], {radius: 2400, color: "#ff9000", fill: true, fillOpacity:1.0, weight: 0 }).bindPopup("<span class=font_size>"+stn_name_ja+"("+stn_name_ja_kana+")\n"+"1時間降水量\n"+precip_1h+"mm</span>").addTo(map);
+                    var circle =  L.circle([lat,lng], {radius: 2400, color: "#ff9000", fill: true, fillOpacity:1.0, weight: 0 }).bindPopup("<span class=font_size>"+stn_name_ja+"("+stn_name_ja_kana+")\n"+precip_1h+"mm</span>").addTo(map);
                   }
                   else if(precip_1h >= 20.0&&precip_1h < 30.0){
-                    var circle =  L.circle([lat,lng], {radius: 2400, color: "#d3cd00", fill: true, fillOpacity:1.0, weight: 0 }).bindPopup("<span class=font_size>"+stn_name_ja+"("+stn_name_ja_kana+")\n"+"1時間降水量\n"+precip_1h+"mm</span>").addTo(map);
+                    var circle =  L.circle([lat,lng], {radius: 2400, color: "#d3cd00", fill: true, fillOpacity:1.0, weight: 0 }).bindPopup("<span class=font_size>"+stn_name_ja+"("+stn_name_ja_kana+")\n"+precip_1h+"mm</span>").addTo(map);
                   }
                   else if(precip_1h >= 10.0&&precip_1h < 20.0){
-                    var circle =  L.circle([lat,lng], {radius: 2400, color: "#00bf0d", fill: true, fillOpacity:1.0, weight: 0 }).bindPopup("<span class=font_size>"+stn_name_ja+"("+stn_name_ja_kana+")\n"+"1時間降水量\n"+precip_1h+"mm</span>").addTo(map);
+                    var circle =  L.circle([lat,lng], {radius: 2400, color: "#00bf0d", fill: true, fillOpacity:1.0, weight: 0 }).bindPopup("<span class=font_size>"+stn_name_ja+"("+stn_name_ja_kana+")\n"+precip_1h+"mm</span>").addTo(map);
                   }
                   else if(precip_1h >= 5.0&&precip_1h < 10.0){
-                    var circle =  L.circle([lat,lng], {radius: 2400, color: "#009fa1", fill: true, fillOpacity:1.0, weight: 0 }).bindPopup("<span class=font_size>"+stn_name_ja+"("+stn_name_ja_kana+")\n"+"1時間降水量\n"+precip_1h+"mm</span>").addTo(map);
+                    var circle =  L.circle([lat,lng], {radius: 2400, color: "#009fa1", fill: true, fillOpacity:1.0, weight: 0 }).bindPopup("<span class=font_size>"+stn_name_ja+"("+stn_name_ja_kana+")\n"+precip_1h+"mm</span>").addTo(map);
                   }
                   else if(precip_1h >= 1.0&&precip_1h < 5.0){
-                    var circle =  L.circle([lat,lng], {radius: 2400, color: "#00a9ff", fill: true, fillOpacity:1.0, weight: 0 }).bindPopup("<span class=font_size>"+stn_name_ja+"("+stn_name_ja_kana+")\n"+"1時間降水量\n"+precip_1h+"mm</span>").addTo(map);
+                    var circle =  L.circle([lat,lng], {radius: 2400, color: "#00a9ff", fill: true, fillOpacity:1.0, weight: 0 }).bindPopup("<span class=font_size>"+stn_name_ja+"("+stn_name_ja_kana+")\n"+precip_1h+"mm</span>").addTo(map);
                   }
                   else if(precip_1h <= 1.0&&precip_1h >=0.1){
-                    var circle =  L.circle([lat,lng], {radius: 2400, color: "#7e7e7e", fill: true, fillOpacity:1.0, weight: 0 }).bindPopup("<span class=font_size>"+stn_name_ja+"("+stn_name_ja_kana+")\n"+"1時間降水量\n"+precip_1h+"mm</span>").addTo(map);
+                    var circle =  L.circle([lat,lng], {radius: 2400, color: "#7e7e7e", fill: true, fillOpacity:1.0, weight: 0 }).bindPopup("<span class=font_size>"+stn_name_ja+"("+stn_name_ja_kana+")\n"+precip_1h+"mm</span>").addTo(map);
                   }
                   else if(precip_1h == 0.0){
-                    var circle =  L.circle([lat,lng], {radius: 2400, color: "white", fill: false, fillOpacity:1.0, weight: 0 }).bindPopup("<span class=font_size>"+stn_name_ja+"("+stn_name_ja_kana+")\n"+"1時間降水量\n"+precip_1h+"mm</span>").addTo(map);
+                    var circle =  L.circle([lat,lng], {radius: 2400, color: "white", fill: false, fillOpacity:1.0, weight: 0 }).bindPopup("<span class=font_size>"+stn_name_ja+"("+stn_name_ja_kana+")\n"+precip_1h+"mm</span>").addTo(map);
                   }
                   else{
                   }
