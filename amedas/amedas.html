@@ -52,19 +52,8 @@
                 var time = json.stations[i].updatedAt;
                 if(Number(json.stations[i].preall) != null){
                   precip_1h = Number(json.stations[i].preall.precip_1h);
-                  console.log("aaa"+precip_1h);
-                  for(let n in i){   
-                  var array = [Number(json.stations[n].preall.precip_1h)];
-
-                  array.sort(
-                    function(a,b){
-                  return (a < b ? 1 : -1);
-                  }
-                  );
-                  console.log("bbb"+array);
-                  }
                   var up = document.getElementById("up");
-                  up.innerHTML = "";
+                  up.innerHTML += lat;
                   if(precip_1h >= 80.0){
                     var circle =  L.circle([lat,lng], {radius: 2400, color: "#9800af", fill: true, fillOpacity:1.0, weight: 0 }).bindPopup("<span class=font_size>"+stn_name_ja+"("+stn_name_ja_kana+")\n"+precip_1h+"mm</span>").addTo(map);
                   }
