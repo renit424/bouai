@@ -53,7 +53,7 @@
                 if(Number(json.stations[i].preall) != null){
                   precip_1h = Number(json.stations[i].preall.precip_1h);
                   var up = document.getElementById("up");
-                  up.innerHTML += lat;
+                  up.innerHTML += "";
                   if(precip_1h >= 80.0){
                     var circle =  L.circle([lat,lng], {radius: 2400, color: "#9800af", fill: true, fillOpacity:1.0, weight: 0 }).bindPopup("<span class=font_size>"+stn_name_ja+"("+stn_name_ja_kana+")\n"+precip_1h+"mm</span>").addTo(map);
                   }
@@ -109,7 +109,7 @@
 <body onload="init()">
   <div id="map" class="max"></div>
   <div class="infopanel">
-    <a>1時間降水量(<a id="up"></a>)<br></a>
+    <a>1時間降水量<a id="up"></a><br></a>
   </div>
 </body>
 </html>
