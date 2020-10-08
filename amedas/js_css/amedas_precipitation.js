@@ -153,7 +153,7 @@ function init() {
     });
     legend.onAdd = function (map) {
       var div = L.DomUtil.create("div", "info legend");
-      grades = ["80mm～", "50mm～", "30mm～", "20mm～", "10mm～", "5mm～", "1mm～", "～1mm"],
+      grades = ["80mm～", "50mm～", "30mm～", "20mm～", "10mm～", " 5mm～", " 1mm～", " ～1mm"],
         labels = ["80mm.png", "50mm.png", "30mm.png", "20mm.png", "10mm.png", "5mm.png", "1mm-.png", "1mm.png"];
       for (var i = 0; i < grades.length; i++) {
         div.innerHTML += grades[i] + (" <img src=/amedas/" + /image/ + labels[i] + " height=20 width=20" + ">") + "<br>";
