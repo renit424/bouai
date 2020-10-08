@@ -24,7 +24,7 @@
         Typhoon_01();
         function Typhoon_01() {
           var Line_W = 2;
-          const url = 'http://agora.ex.nii.ac.jp/digital-typhoon/json/wnp/202014.ja.json';
+          const url = 'https://agora.ex.nii.ac.jp/digital-typhoon/json/wnp/202014.ja.json';
           fetch(url).then(function(response) {
             return response.json();
           }).then(function(json) {
@@ -93,7 +93,7 @@
             Layer_503[i] = Circle_shape[i];
             Layer_503[i].addTo(map);
           }
-       const url2 = 'http://agora.ex.nii.ac.jp/digital-typhoon/json/forecast/wnp/202014.ja.json';
+       const url2 = 'https://agora.ex.nii.ac.jp/digital-typhoon/json/forecast/wnp/202014.ja.json';
           fetch(url2).then(function(response) {
             return response.json();
           }).then(function(json2) {
