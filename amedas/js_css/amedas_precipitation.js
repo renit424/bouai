@@ -66,7 +66,7 @@ function init() {
           if (precip_1h >= 80.0) {
             var circle = L.circle([lat, lng], {
               radius: 2400,
-              color: "#9800af",
+              color: "rgb(255,6,181)",
               fill: true,
               fillOpacity: 1.0,
               weight: 0
@@ -74,7 +74,7 @@ function init() {
           } else if (precip_1h >= 50.0 && precip_1h < 80.0) {
             var circle = L.circle([lat, lng], {
               radius: 2400,
-              color: "#f20000",
+              color: "rgb(255,0,0)",
               fill: true,
               fillOpacity: 1.0,
               weight: 0
@@ -82,7 +82,7 @@ function init() {
           } else if (precip_1h >= 30.0 && precip_1h < 50.0) {
             var circle = L.circle([lat, lng], {
               radius: 2400,
-              color: "#ff9000",
+              color: "rgb(255,68,21)",
               fill: true,
               fillOpacity: 1.0,
               weight: 0
@@ -90,7 +90,7 @@ function init() {
           } else if (precip_1h >= 20.0 && precip_1h < 30.0) {
             var circle = L.circle([lat, lng], {
               radius: 2400,
-              color: "#d3cd00",
+              color: "rgb(253,139,0)",
               fill: true,
               fillOpacity: 1.0,
               weight: 0
@@ -98,7 +98,7 @@ function init() {
           } else if (precip_1h >= 10.0 && precip_1h < 20.0) {
             var circle = L.circle([lat, lng], {
               radius: 2400,
-              color: "#00bf0d",
+              color: "rgb(255,242,0)",
               fill: true,
               fillOpacity: 1.0,
               weight: 0
@@ -106,7 +106,7 @@ function init() {
           } else if (precip_1h >= 5.0 && precip_1h < 10.0) {
             var circle = L.circle([lat, lng], {
               radius: 2400,
-              color: "#009fa1",
+              color: "rgb(61,255,4)",
               fill: true,
               fillOpacity: 1.0,
               weight: 0
@@ -114,7 +114,7 @@ function init() {
           } else if (precip_1h >= 1.0 && precip_1h < 5.0) {
             var circle = L.circle([lat, lng], {
               radius: 2400,
-              color: "#00a9ff",
+              color: "rgb(0,162,232)",
               fill: true,
               fillOpacity: 1.0,
               weight: 0
@@ -122,7 +122,7 @@ function init() {
           } else if (precip_1h <= 1.0 && precip_1h >= 0.1) {
             var circle = L.circle([lat, lng], {
               radius: 2400,
-              color: "#7e7e7e",
+              color: "rgb(63,72,204)",
               fill: true,
               fillOpacity: 1.0,
               weight: 0
