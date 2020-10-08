@@ -6,7 +6,7 @@ function init() {
 	attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors &copy; <a href="https://carto.com/attributions">CARTO</a>',
 	subdomains: 'abcd',
 	maxZoom: 18
-});
+}).addTo(map);
   L.control.scale({
     maxWidth: 200,
     position: 'bottomleft',
