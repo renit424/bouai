@@ -61,8 +61,8 @@ function init() {
         var time = json.stations[i].updatedAt;
         if (Number(json.stations[i].preall) != null) {
           precip_1h = Number(json.stations[i].preall.precip_1h);
-          var up = document.getElementById("up");
-          up.innerHTML += "";
+          var updata = document.getElementById("updata");
+          updata.innerHTML = json.stations[i].updatedAt;
           if (precip_1h >= 80.0) {
             var circle = L.circle([lat, lng], {
               radius: 2400,
