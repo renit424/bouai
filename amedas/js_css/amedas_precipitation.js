@@ -144,9 +144,9 @@ function init() {
 						}).bindPopup("<span class=font_size>" + stn_name_ja + "(" +
 							stn_name_ja_kana + ")\n" + precip_1h + "mm</span>").addTo(map);
 					} else {}
+					var updated json.stations[0].updated
 					var updata = document.getElementById("updata");
-					updata.innerHTML = json.stations[0].updated.replace("-", "/").replace(
-						"T", " ").slice(0, -5);
+					updata.innerHTML = updated.replace("-", "/").replace("T", " ").slice(0, -5);
 				} else {
 					var circle = L.circle([lat, lng], {
 						radius: 1800,
