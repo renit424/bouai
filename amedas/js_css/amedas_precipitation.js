@@ -146,7 +146,7 @@ function init() {
 					} else {}
 					var updated = json.stations[0].updated;
 					var updata = document.getElementById("updata");
-					updata.innerHTML = updated.replace("-", "/").replace("T", " ").slice(0, -5);
+					updata.innerHTML += updated.replace("/-", "/").replace("/T", " ").slice(0, -5);
 				} else {
 					var circle = L.circle([lat, lng], {
 						radius: 1800,
