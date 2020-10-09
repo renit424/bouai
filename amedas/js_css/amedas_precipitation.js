@@ -144,7 +144,7 @@ function init() {
 						}).bindPopup("<span class=font_size>" + stn_name_ja + "(" +
 							stn_name_ja_kana + ")\n" + precip_1h + "mm</span>").addTo(map);
 					} else {}
-					var updated = json.stations[0].updated;
+					var updated = json.stations[0].updatedAt;
 					var updata = document.getElementById("updata");
 					console.log(updated);
 					console.log(updated.split('-').join('/').split('T').join(' ').slice(0, -5));
