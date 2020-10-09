@@ -24,10 +24,16 @@
         Typhoon_01();
         function Typhoon_01() {
           var Line_W = 2;
-          const url = 'https://agora.ex.nii.ac.jp/digital-typhoon/json/wnp/202014.ja.json';
-          fetch(url).then(function(response) {
-            return response.json();
-          }).then(function(json) {
+          const url = 'http://agora.ex.nii.ac.jp/digital-typhoon/json/wnp/202014.ja.json';
+          var json = new XMLHttpRequest();		  // XMLHttpRequest オブジェクトを生成する
+            json.onreadystatechange = function() {		  // XMLHttpRequest オブジェクトの状態が変化した際に呼び出されるイベントハンドラ
+            if(json.readyState == 4 && json.status == 200){ // サーバーからのレスポンスが完了し、かつ、通信が正常に終了した場合
+            alert(json.responseText);		          // 取得した JSON ファイルの中身を表示
+          }
+          };
+        json.open("GET", url, false); // HTTPメソッドとアクセスするサーバーの　URL　を指定
+        json.send(null);		
+          
             var len = json['track'].length-1;
             for(var i=0; i<len; i++) {
           var myIcon = L.icon({
@@ -93,10 +99,15 @@
             Layer_503[i] = Circle_shape[i];
             Layer_503[i].addTo(map);
           }
-       const url2 = 'https://agora.ex.nii.ac.jp/digital-typhoon/json/forecast/wnp/202014.ja.json';
-          fetch(url2).then(function(response) {
-            return response.json();
-          }).then(function(json2) {
+       const url2 = 'http://agora.ex.nii.ac.jp/digital-typhoon/json/forecast/wnp/202014.ja.json';
+            var json2 = new XMLHttpRequest();		  // XMLHttpRequest オブジェクトを生成する
+            json2.onreadystatechange = function() {		  // XMLHttpRequest オブジェクトの状態が変化した際に呼び出されるイベントハンドラ
+            if(json2.readyState == 4 && json2.status == 200){ // サーバーからのレスポンスが完了し、かつ、通信が正常に終了した場合
+            alert(json2.responseText);		          // 取得した JSON ファイルの中身を表示
+          }
+          };
+        json2.open("GET", url2, false); // HTTPメソッドとアクセスするサーバーの　URL　を指定
+        json2.send(null);		
             for(var i=0; i<2; i++) {
               a2 = parseFloat(json2[0].lat)
               b2 = parseFloat(json2[0].long);
