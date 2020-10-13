@@ -7,48 +7,14 @@
   <link rel="stylesheet" href="https://unpkg.com/leaflet@1.4.0/dist/leaflet.css" />
   <script src="https://unpkg.com/leaflet@1.4.0/dist/leaflet.js"></script>
   <script>// ベースレイヤーの表示オプション
-var baseOptions = {
-    minZoom: 6,
-    maxZoom: 21,
-    attribution: '&copy INCREMENT P CORPORATION <a href="https://api-auth-pre.mapfan.com/terms/mfapi_terms.pdf">利用規約</a>',
-};
+m <- leaflet(df) %>% addTiles()
+m
 
-var mapUrl = 'https://{s}.basemaps.cartocdn.com/dark_nolabels/{z}/{x}/{y}{r}.png';
-
-// ●1. Layerの生成
-// mapstyle=std_pc（標準デザイン（デフォルト））
-var standard = L.tileLayer(mapUrl, baseOptions);
-// mapstyle=gray_pc（グレースケール地図）
-var gray = L.tileLayer(mapUrl + '&mapstyle=gray_pc', baseOptions);
-// mapstyle=rpg_pc（RPG風地図）
-var rpg = L.tileLayer(mapUrl + '&mapstyle=rpg_pc', baseOptions);
-// mapstyle=antique_pc（古地図風地図）
-var antique = L.tileLayer(mapUrl + '&mapstyle=antique_pc', baseOptions);
-// mapstyle=tourism_pc（おもてなしマップ（カラーユニバーサルデザイン対応））
-var tourism = L.tileLayer(mapUrl + '&mapstyle=tourism_pc', baseOptions);
-
-// LeafletのMapクラスに、地図を表示する領域のdivタグのidを指定
-// 初期表示位置・スケールは、東京駅 スケール17に設定
-var map = L.map('map', {
-    center: L.latLng(35.68116552628331, 139.76719388020982),
-    zoom: 17,
-    // ●2. (1)のうち初期表示するLayerをMapへ設定
-    layers: [standard],
-});
-
-// ●3. UIコントローラー上の表示名と(1)のLayerを紐付け
-var baseLayerControls = {
-    '標準': standard,
-    'グレー': gray,
-    'RPG風': rpg,
-    '古地図風': antique,
-    'おもてなし': tourism,
-};
-
-// ●4. (3)をL.control.layersへ設定、L.control.layersをMapへ設定
-L.control.layers(baseLayerControls, null, {
-    collapsed: false,
-}).addTo(map);</script>
+df3 <- mutate(df2, atnd=sample(c("kosaki","chitoge"),1000,replace = TRUE))
+leaflet(df3) %>% addTiles() %>% 
+    addCircleMarkers(~lng, ~lat, group="kosaki", color="#f63", stroke=FALSE, data=filter(.data=df3, atnd=="kosaki")) %>% 
+    addCircleMarkers(~lng, ~lat, group="chitoge", color="#96f", stroke=FALSE, data=filter(.data=df3, atnd=="chitoge")) %>% 
+    addLayersControl(overlayGroups=c("kosaki","chitoge"))</script>
 </head>
 <body>
   <div id="map" class="max"></div>
