@@ -7,14 +7,110 @@
   <link rel="stylesheet" href="https://unpkg.com/leaflet@1.4.0/dist/leaflet.css" />
   <script src="https://unpkg.com/leaflet@1.4.0/dist/leaflet.js"></script>
   <script>// ベースレイヤーの表示オプション
-leaflet()
-    addTiles()
+# 台風情報
+library("dplyr")
+library("rvest")
+library("stringr")
+library("leaflet")
 
-df3 <- mutate(df2, atnd=sample(c("kosaki","chitoge"),1000,replace = TRUE))
-leaflet(df3)  addTiles() 
-    addCircleMarkers(~lng, ~lat, group="kosaki", color="#f63", stroke=FALSE, data=filter(.data=df3, atnd=="kosaki"))
-    addCircleMarkers(~lng, ~lat, group="chitoge", color="#96f", stroke=FALSE, data=filter(.data=df3, atnd=="chitoge"))
-    addLayersControl(overlayGroups=c("kosaki","chitoge"))</script>
+trg <- read_html("http://www.jma.go.jp/jp/typh/") %>% html_table
+tbl22 <- trg[[4]] # テーブルは4番目が台風22号
+res22 <- data.frame(
+  timing = tbl22$X1 %>% str_subset("[0-9][0-9]日[0-9][0-9]時"),
+  lat = tbl22$X2 %>% 
+    str_subset("北緯") %>%
+    str_extract("[0-9][0-9]\\.[0-9]度") %>%
+    str_replace("度","") %>%
+    as.numeric,
+  lon = tbl22$X2 %>%
+    str_subset("東経") %>%
+    str_extract("[0-9][0-9][0-9]\\.[0-9]度") %>%
+    str_replace("度","") %>%
+    as.numeric,
+  hpa = tbl22$X2 %>% 
+    str_subset("hPa") %>% 
+    str_replace("hPa","") %>% 
+    as.numeric,
+  c_wspeed = tbl22 %>% 
+    dplyr::filter(X1 == "中心付近の最大風速"| X1 == "最大風速") %>% 
+    dplyr::select(X2) %>% 
+    dplyr::rename(c_wspeed=X2),
+  m_wspeed = tbl22 %>% 
+    dplyr::filter(X1 == "最大瞬間風速") %>% 
+    dplyr::select(X2) %>% 
+    dplyr::rename(m_wspeed=X2)
+)
+
+tbl23 <- trg[[5]] # テーブルは4番目が台風23号
+res23 <- data.frame(
+  timing = tbl23$X1 %>% str_subset("[0-9][0-9]日[0-9][0-9]時"),
+  lat = tbl23$X2 %>% 
+    str_subset("北緯") %>%
+    str_extract("[0-9][0-9]\\.[0-9]度") %>%
+    str_replace("度","") %>%
+    as.numeric,
+  lon = tbl23$X2 %>%
+    str_subset("東経") %>%
+    str_extract("[0-9][0-9][0-9]\\.[0-9]度") %>%
+    str_replace("度","") %>%
+    as.numeric,
+  hpa = tbl23$X2 %>% 
+    str_subset("hPa") %>% 
+    str_replace("hPa","") %>% 
+    as.numeric,
+  c_wspeed = tbl23 %>% 
+    dplyr::filter(X1 == "中心付近の最大風速"| X1 == "最大風速") %>% 
+    dplyr::select(X2) %>% 
+    dplyr::rename(c_wspeed=X2),
+  m_wspeed = tbl23 %>% 
+    dplyr::filter(X1 == "最大瞬間風速") %>% 
+    dplyr::select(X2) %>% 
+    dplyr::rename(m_wspeed=X2)
+)
+
+# 2つの台風データを結合
+res <- bind_rows(list(res22=res22,res23=res23),.id = "id")
+    ## leafletで描写
+# カラーパレット作成
+colpal <- colorNumeric(palette = grDevices::heat.colors(n=80), domain = c(930,1000))
+pal <- colorFactor(c("darkgreen","darkblue"),domain=c("台風22号","台風23号"))
+# ポップアップ作成
+res <- dplyr::mutate(res, popup = paste(timing,paste("中心気圧",hpa, "hPa"),paste("最大風速",c_wspeed),paste("瞬間最大風速",m_wspeed),sep = "<br/>"))
+# 説明用テキスト
+text <- paste(paste(Sys.time(),"時点の情報です"),"点をクリックすると情報が出ます","詳細は<a href='http://www.jma.go.jp/jp/typh/'>気象庁の台風情報</a>を確認ください。",sep = "<br/>")
+
+m <- leaflet::leaflet(res) %>% 
+  addTiles() %>% 
+  setView(lng = 139.0000, lat = 35.0000, zoom = 3) %>% 
+  addCircleMarkers(
+    ~lon, ~lat, group = "台風22号", data = dplyr::filter(.data=res, id=="台風22号"),
+    radius = 10, weight = 2,
+    fillOpacity = ~(1000-hpa)/(1000-930), color = ~pal(id),
+    stroke = TRUE, popup = ~popup
+  ) %>% 
+  addPolylines(
+    ~lon, ~lat, group = "台風22号", data = dplyr::filter(.data=res, id=="台風22号"),
+    color = ~pal(id), weight = 3
+  ) %>% 
+    addCircleMarkers(
+    ~lon, ~lat, group = "台風23号", data = dplyr::filter(.data=res, id=="台風23号"),
+    radius = 10, weight = 2,
+    fillOpacity = ~(1000-hpa)/(1000-930), color = ~pal(id),
+    stroke = TRUE, popup = ~popup
+  ) %>% 
+  addPolylines(
+    ~lon, ~lat, group = "台風23号", data = dplyr::filter(.data=res, id=="台風23号"),
+    color = ~pal(id), weight = 3
+  ) %>% 
+  addPopups(lng = 125.0000, lat = 42.0000, text,
+            option = popupOptions(closeButton = FALSE)) %>% 
+  addLegend(position = "topright", pal = colpal, values = ~hpa,
+            title = "中心気圧", labFormat=labelFormat(suffix = " hpa")) %>% 
+  addLegend(position = "topright", pal = pal, value = ~id, title = NULL) %>% 
+  addLayersControl(overlayGroups = c("台風22号","台風23号"),
+                   options = layersControlOptions(collapsed = FALSE))
+m
+  </script>
 </head>
 <body>
   
