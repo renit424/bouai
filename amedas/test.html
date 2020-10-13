@@ -7,7 +7,7 @@
   <link rel="stylesheet" href="https://unpkg.com/leaflet@1.4.0/dist/leaflet.css" />
   <script src="https://unpkg.com/leaflet@1.4.0/dist/leaflet.js"></script>
   <script>// ベースレイヤーの表示オプション
-leaflet() %>% 
+leaflet()
     addTiles()
 
 df3 <- mutate(df2, atnd=sample(c("kosaki","chitoge"),1000,replace = TRUE))
