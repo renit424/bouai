@@ -6,15 +6,14 @@
   <link rel="stylesheet" href="js_css/amedas.css">
   <link rel="stylesheet" href="https://unpkg.com/leaflet@1.4.0/dist/leaflet.css" />
   <script src="https://unpkg.com/leaflet@1.4.0/dist/leaflet.js"></script>
-  <script>// ベースレイヤーの表示オプション
-# 台風情報
+  <script>
 library("dplyr")
 library("rvest")
 library("stringr")
 library("leaflet")
 
 trg <- read_html("http://www.jma.go.jp/jp/typh/") %>% html_table
-tbl22 <- trg[[4]] # テーブルは4番目が台風22号
+tbl22 <- trg[[4]]
 res22 <- data.frame(
   timing = tbl22$X1 %>% str_subset("[0-9][0-9]日[0-9][0-9]時"),
   lat = tbl22$X2 %>% 
@@ -41,7 +40,7 @@ res22 <- data.frame(
     dplyr::rename(m_wspeed=X2)
 )
 
-tbl23 <- trg[[5]] # テーブルは4番目が台風23号
+tbl23 <- trg[[5]]
 res23 <- data.frame(
   timing = tbl23$X1 %>% str_subset("[0-9][0-9]日[0-9][0-9]時"),
   lat = tbl23$X2 %>% 
@@ -68,15 +67,15 @@ res23 <- data.frame(
     dplyr::rename(m_wspeed=X2)
 )
 
-# 2つの台風データを結合
+
 res <- bind_rows(list(res22=res22,res23=res23),.id = "id")
-    ## leafletで描写
-# カラーパレット作成
+   
+
 colpal <- colorNumeric(palette = grDevices::heat.colors(n=80), domain = c(930,1000))
 pal <- colorFactor(c("darkgreen","darkblue"),domain=c("台風22号","台風23号"))
-# ポップアップ作成
+
 res <- dplyr::mutate(res, popup = paste(timing,paste("中心気圧",hpa, "hPa"),paste("最大風速",c_wspeed),paste("瞬間最大風速",m_wspeed),sep = "<br/>"))
-# 説明用テキスト
+
 text <- paste(paste(Sys.time(),"時点の情報です"),"点をクリックすると情報が出ます","詳細は<a href='http://www.jma.go.jp/jp/typh/'>気象庁の台風情報</a>を確認ください。",sep = "<br/>")
 
 m <- leaflet::leaflet(res) %>% 
