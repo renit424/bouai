@@ -7,14 +7,14 @@
   <link rel="stylesheet" href="https://unpkg.com/leaflet@1.4.0/dist/leaflet.css" />
   <script src="https://unpkg.com/leaflet@1.4.0/dist/leaflet.js"></script>
   <script>// ベースレイヤーの表示オプション
-leaflet();
-    addTiles();
+leaflet()
+    addTiles()
 
-df3 <- mutate(df2, atnd=sample(c("kosaki","chitoge"),1000,replace = TRUE));
-leaflet(df3);  addTiles() ;
-    addCircleMarkers(~lng, ~lat, group="kosaki", color="#f63", stroke=FALSE, data=filter(.data=df3, atnd=="kosaki")) ;
-    addCircleMarkers(~lng, ~lat, group="chitoge", color="#96f", stroke=FALSE, data=filter(.data=df3, atnd=="chitoge"));
-    addLayersControl(overlayGroups=c("kosaki","chitoge"));</script>
+df3 <- mutate(df2, atnd=sample(c("kosaki","chitoge"),1000,replace = TRUE))
+leaflet(df3)  addTiles() 
+    addCircleMarkers(~lng, ~lat, group="kosaki", color="#f63", stroke=FALSE, data=filter(.data=df3, atnd=="kosaki"))
+    addCircleMarkers(~lng, ~lat, group="chitoge", color="#96f", stroke=FALSE, data=filter(.data=df3, atnd=="chitoge"))
+    addLayersControl(overlayGroups=c("kosaki","chitoge"))</script>
 </head>
 <body>
   
