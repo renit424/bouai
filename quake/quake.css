@@ -1,0 +1,24 @@
+body{
+    margin: 0;
+    padding: 0;
+}  
+span.font_size {
+    font-size: 130%;
+}
+.max {
+    height: 100vh; /* 全画面表示 */
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center center;
+}
+.infopanel {
+    position: fixed; /* 画面上に絶対座標で固定 */
+    top: 10px; /* 画面 上からの距離 */
+    left: 10px; /* 画面左からの距離 */
+    width: 215px; /* パネルの横幅 */
+    height: 130px; /* パネルの縦幅 */
+    background-color: white; /* 背景色 */
+    color: black; /* 文字色 */
+    padding: 15px; /* 背景端からの距離 */
+    z-index: 1000;
+}
