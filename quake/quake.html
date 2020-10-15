@@ -8,16 +8,23 @@
   <script src="https://unpkg.com/leaflet@1.4.0/dist/leaflet.js"></script>
   <script>
 function init() {
-    var map = L.map('map',{zoomControl: false}).setView([37,137], 6);
-    mapLink = '<a href="https://openstreetmap.org">OpenStreetMap</a>';
-    L.tileLayer(
-      'https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-        attribution: 'Map data &copy; ' + mapLink,
-        maxZoom: 18
-    }).addTo(map);
-    L.control.scale({maxWidth:200,position:'bottomleft',imperial:false}).addTo(map);
-    L.control.zoom({position:'topright'}).addTo(map);
-    map.locate({setView: true, maxZoom: 16, timeout: 20000});
+    var map = L.map('map', {
+		zoomControl: false
+	}).setView([37, 135], 5);
+	L.tileLayer(
+		'https://{s}.basemaps.cartocdn.com/dark_nolabels/{z}/{x}/{y}{r}.png', {
+			attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors &copy; <a href="https://carto.com/attributions">CARTO</a>',
+			subdomains: 'abcd',
+			maxZoom: 18
+		}).addTo(map);
+	L.control.scale({
+		maxWidth: 200,
+		position: 'bottomleft',
+		imperial: false
+	}).addTo(map);
+	L.control.zoom({
+		position: 'topright'
+	}).addTo(map);
       amedas();
       function amedas() {
         var Line_W = 2;
