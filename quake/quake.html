@@ -51,8 +51,7 @@
                   lon.push(json2.items[i].lon);
                   name.push(json2.items[i].name);
               }
-              var coordinate = json[0].earthquake.hypocenter.latitude+","+json[0].earthquake.hypocenter.longitude;
-              map.setView([coordinate], 6);
+              map.setView([json[0].earthquake.hypocenter.latitude,json[0].earthquake.hypocenter.longitude], 6);
               var maxScale = json[0].earthquake.maxScale;
               var maxint ="";
               if (maxScale == "10"){ //震度1
