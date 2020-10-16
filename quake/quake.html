@@ -3,133 +3,142 @@
 <head>
   <title>地震情報</title>
   <meta charset="utf-8" />
-  <link rel="stylesheet" href="quake.css">
+  <link rel="stylesheet" href="amedas.css">
   <link rel="stylesheet" href="https://unpkg.com/leaflet@1.4.0/dist/leaflet.css" />
   <script src="https://unpkg.com/leaflet@1.4.0/dist/leaflet.js"></script>
   <script>
-function init() {
-    var map = L.map('map', {
-		zoomControl: false
-	}).setView([37, 135], 5);
-	L.tileLayer(
-		'https://{s}.basemaps.cartocdn.com/dark_nolabels/{z}/{x}/{y}{r}.png', {
-			attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors &copy; <a href="https://carto.com/attributions">CARTO</a>',
-			subdomains: 'abcd',
-			maxZoom: 18
-		}).addTo(map);
-	L.control.scale({
-		maxWidth: 200,
-		position: 'bottomleft',
-		imperial: false
-	}).addTo(map);
-	L.control.zoom({
-		position: 'topright'
-	}).addTo(map);
-      amedas();
-      function amedas() {
-        var Line_W = 2;
-        var len = 0;
-        var lat = [];
-        var lon = [];
-        var name = [];
-        var sclae = "";
-        var addr2;
-        const url = 'https://api.renitapps.com/quake.php';
-        //const url = 'quakep2p.json';
-        const url2 = 'position.json';
-        fetch(url).then(function(response) {
-          return response.json();
-        }).then(function(json) {
-        fetch(url2).then(function(response) {
-          return response.json();
-        }).then(function(json2) {
-          len = Object.keys(json2['items']).length-1;
-          for(var i=0; i<=len; i++) {
-              lat.push(json2.items[i].position.lat);
-              lon.push(json2.items[i].position.lon);
-              name.push(json2.items[i].intensitystation.name);
+    function init() {
+        var map = L.map('map', {
+    		zoomControl: false
+    	}).setView([37, 135], 5);
+    	L.tileLayer(
+    		'https://{s}.basemaps.cartocdn.com/dark_nolabels/{z}/{x}/{y}{r}.png', {
+    			attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors &copy; <a href="https://carto.com/attributions">CARTO</a>',
+    			subdomains: 'abcd',
+    			maxZoom: 18
+    		}).addTo(map);
+    	L.control.scale({
+    		maxWidth: 200,
+    		position: 'bottomleft',
+    		imperial: false
+    	}).addTo(map);
+    	L.control.zoom({
+    		position: 'topright'
+    	}).addTo(map);
+          quake();
+          function quake() {
+            var Line_W = 2;
+            var len = 0;
+            var lat = [];
+            var lon = [];
+            var name = [];
+            var sclae;
+            var s = [];
+            var addr2;
+            //const url = 'https://api.renitapps.com/quake.php';
+            //const url = 'quakep2p.json';
+            const url = 'quake2.json';
+            const url2 = 'stations.json';
+            fetch(url).then(function(response) {
+              return response.json();
+            }).then(function(json) {
+            fetch(url2).then(function(response) {
+              return response.json();
+            }).then(function(json2) {
+              len2 = Object.keys(json2['items']).length-1;
+              for(var i=0; i<=len2; i++) {
+                  lat.push(json2.items[i].lat);
+                  lon.push(json2.items[i].lon);
+                  name.push(json2.items[i].name);
+              }
+              var coordinate = json[0].earthquake.hypocenter.latitude;
+              var maxScale = json[0].earthquake.maxScale;
+              var maxint ="";
+              if (maxScale == "10"){ //震度1
+                  maxint = "1"
+              }
+              else if (maxScale == "20"){ //震度2
+                  maxint = "2"
+              }
+              else if (maxScale == "30"){ //震度3
+                  maxint = "3"
+              }
+              else if (maxScale == "40"){ //震度4
+                  maxint = "4"
+              }else if (maxScale == "45"){ //震度5-
+                  maxint = "5弱"
+              }else if (maxScale == "50"){ //震度5+
+                  maxint = "5強"
+              }
+              else if (maxScale == "55"){ //震度6-
+                  maxint = "6弱"
+              }
+              else if (maxScale == "60"){ //震度6+
+                  maxint = "6強"
+              }
+              else if(maxScale == "70"){ //震度7
+                  maxint = "7"
+              }
+              else{}
+              var info = document.getElementById("info");
+              info.innerHTML = "<br>発生時刻 "+json[0].earthquake.time.split('/').join('月').split(' ').join('日').slice(5)+"<br>最大震度 "+maxint+"<br>震源地 "+json[0].earthquake.hypocenter.name+"<br>深さ "+json[0].earthquake.hypocenter.depth+"km<br>規模(M) "+json[0].earthquake.hypocenter.magnitude;
+              var myIcon = L.icon({iconUrl: 'icon.png',iconSize: [30,30]});
+              L.marker([json[0].earthquake.hypocenter.latitude,json[0].earthquake.hypocenter.longitude], {icon: myIcon}).bindPopup("<span class=font_size>震源地："+json[0].earthquake.hypocenter.name+"</span>").addTo(map);
+              len = Object.keys(json[0]['points']).length;
+              for(var i=0; i<len; i++) {
+                  s.push(json[0].points[i].scale); 
+              }
+              for(var i=0; i<len; i++) {
+                  addr2 = json[0].points[i].addr;
+                  sclae = json[0].points[i].scale;
+                  var result = name.filter( function( value ) {
+                    return value === addr2;
+                  })
+                  var result2 = s.filter( function( value2 ) {
+                    return value2 === sclae;
+                  })
+                  console.log(result);
+                  console.log(result2);
+                  if (result2[i] == 10){ //震度1
+                    var circle =  L.circle([lat[name.findIndex(item => item === addr2)],lon[name.findIndex(item => item === addr2)]], {radius: 2400, color: "#ffffff", fill: true, fillOpacity:1.0, weight: 0 }).bindPopup("<span class=font_size>"+name[name.findIndex(item => item === addr2)+1]+"</span>").addTo(map);
+                  } 
+                  else if (result2[i] == 20){ //震度2
+                    var circle =  L.circle([lat[name.findIndex(item => item === addr2)],lon[name.findIndex(item => item === addr2)]], {radius: 2400, color: "#1e90ff", fill: true, fillOpacity:1.0, weight: 0 }).bindPopup("<span class=font_size>"+name[name.findIndex(item => item === addr2)+1]+"</span>").addTo(map);
+                  }
+                  else if (result2[i] == 30){ //震度3
+                      var circle =  L.circle([lat[name.findIndex(item => item === addr2)],lon[name.findIndex(item => item === addr2)]], {radius: 2400, color: "#32cd32", fill: true, fillOpacity:1.0, weight: 0 }).bindPopup("<span class=font_size>"+name[name.findIndex(item => item === addr2)+1]+"</span>").addTo(map);
+                  }
+                  else if (result2[i] == 40){ //震度4
+                      var circle =  L.circle([lat[name.findIndex(item => item === addr2)],lon[name.findIndex(item => item === addr2)]], {radius: 2400, color: "#ff8c00", fill: true, fillOpacity:1.0, weight: 0 }).bindPopup("<span class=font_size>"+name[name.findIndex(item => item === addr2)+1]+"</span>").addTo(map);
+                  }
+                  else if (result2[i] == 45){ //震度5-
+                      var circle =  L.circle([lat[name.findIndex(item => item === addr2)],lon[name.findIndex(item => item === addr2)]], {radius: 2400, color: "#ffa500", fill: true, fillOpacity:1.0, weight: 0 }).bindPopup("<span class=font_size>"+name[name.findIndex(item => item === addr2)+1]+"</span>").addTo(map);
+                  }
+                  else if (result2[i] == 50){ //震度5+
+                      var circle =  L.circle([lat[name.findIndex(item => item === addr2)],lon[name.findIndex(item => item === addr2)]], {radius: 2400, color: "#ff8c00", fill: true, fillOpacity:1.0, weight: 0 }).bindPopup("<span class=font_size>"+name[name.findIndex(item => item === addr2)+1]+"</span>").addTo(map);
+                  }
+                  else if (result2[i] == 55){ //震度6-
+                      var circle =  L.circle([lat[name.findIndex(item => item === addr2)],lon[name.findIndex(item => item === addr2)]], {radius: 2400, color: "#dc143c", fill: true, fillOpacity:1.0, weight: 0 }).bindPopup("<span class=font_size>"+name[name.findIndex(item => item === addr2)+1]+"</span>").addTo(map);
+                  }
+                  else if (result2[i] == 60){ //震度6+
+                      var circle =  L.circle([lat[name.findIndex(item => item === addr2)],lon[name.findIndex(item => item === addr2)]], {radius: 2400, color: "#ff0000", fill: true, fillOpacity:1.0, weight: 0 }).bindPopup("<span class=font_size>"+name[name.findIndex(item => item === addr2)+1]+"</span>").addTo(map);
+                  }
+                  else if (result2[i] == 70){ //震度7
+                    var circle =  L.circle([lat[name.findIndex(item => item === addr2)],lon[name.findIndex(item => item === addr2)]], {radius: 2400, color: "#8a2be2", fill: true, fillOpacity:1.0, weight: 0 }).bindPopup("<span class=font_size>"+name[name.findIndex(item => item === addr2)+1]+"</span>").addTo(map);
+                  }
+                  else{
+    
+                  }
+              }
+            });
+            });
           }
-          var coordinate = json[0].earthquake.hypocenter.latitude;
-          console.log(coordinate);
-          var maxScale = json[0].earthquake.maxScale;
-          var maxint ="";
-          if (maxScale == "10"){ //震度1
-              maxint = "1"
-          }
-          else if (maxScale == "20"){ //震度2
-              maxint = "2"
-          }
-          else if (maxScale == "30"){ //震度3
-              maxint = "3"
-          }
-          else if (maxScale == "40"){ //震度4
-              maxint = "4"
-          }else if (maxScale == "50"){ //震度5-
-              maxint = "5弱"
-          }else if (maxScale == "55"){ //震度5+
-              maxint = "5強"
-          }
-          else if (maxScale == "60"){ //震度6-
-              maxint = "6弱"
-          }
-          else if (maxScale == "65"){ //震度6+
-              maxint = "6強"
-          }
-          else if(maxScale == "70"){ //震度7
-              maxint = "7"
-          }
-          else{}
-          var info = document.getElementById("info");
-          info.innerHTML = "<br>発生時刻 "+json[0].earthquake.time.split('/').join('月').split(' ').join('日').slice(5)+"<br>最大震度 "+maxint+"<br>震源地 "+json[0].earthquake.hypocenter.name+"<br>深さ "+json[0].earthquake.hypocenter.depth+"km<br>規模(M) "+json[0].earthquake.hypocenter.magnitude;
-          var myIcon = L.icon({iconUrl: 'icon.png',iconSize: [20,20]});
-          L.marker([json[0].earthquake.hypocenter.latitude,json[0].earthquake.hypocenter.longitude], {icon: myIcon}).bindPopup("<span class=font_size>震源地："+json[0].earthquake.hypocenter.name+"</span>").addTo(map);
-          len = Object.keys(json[0]['points']).length;
-          for(var i=0; i<len; i++) {
-              addr2 = json[0].points[i].addr;
-              var result = name.filter( function( value ) {
-                return value === addr2;
-              })
-              sclae = (json[0].points[i].scale);
-              console.log(sclae);
-              //if (scale.findIndex(item => item === addr2) == "10"){ //震度1
-              //    var circle =  L.circle([lat[name.findIndex(item => item === addr2)],lon[name.findIndex(item => item === addr2)]], {radius: 2400, color: "rgb(63,72,204)", fill: true, fillOpacity:1.0, weight: 0 }).bindPopup("<span class=font_size>"+name[name.findIndex(item => item === addr2)+1]+"</span>").addTo(map);
-              //} 
-              //else if (scale.findIndex(item => item === addr2) == "20"){ //震度2
-              //    var circle =  L.circle([lat[name.findIndex(item => item === addr2)],lon[name.findIndex(item => item === addr2)]], {radius: 2400, color: "rgb(61,255,4)", fill: true, fillOpacity:1.0, weight: 0 }).bindPopup("<span class=font_size>"+name[name.findIndex(item => item === addr2)+1]+"</span>").addTo(map);
-              //}
-              //else if (scale == "30"){ //震度3
-              //    var circle =  L.circle([lat[name.findIndex(item => item === addr2)],lon[name.findIndex(item => item === addr2)]], {radius: 2400, color: "#9800af", fill: true, fillOpacity:1.0, weight: 0 }).bindPopup("<span class=font_size>"+name[name.findIndex(item => item === addr2)+1]+"</span>").addTo(map);
-              //}
-              //else if (scale == "40"){ //震度4
-              //    var circle =  L.circle([lat[name.findIndex(item => item === addr2)],lon[name.findIndex(item => item === addr2)]], {radius: 2400, color: "rgb(255,242,0)", fill: true, fillOpacity:1.0, weight: 0 }).bindPopup("<span class=font_size>"+name[name.findIndex(item => item === addr2)+1]+"</span>").addTo(map);
-              //}
-              //else if (scale == "50"){ //震度5-
-              //    var circle =  L.circle([lat[name.findIndex(item => item === addr2)],lon[name.findIndex(item => item === addr2)]], {radius: 2400, color: "rgb(255,0,0)", fill: true, fillOpacity:1.0, weight: 0 }).bindPopup("<span class=font_size>"+name[name.findIndex(item => item === addr2)+1]+"</span>").addTo(map);
-              //  }
-              //else if (scale == "55"){ //震度5+
-              //    var circle =  L.circle([lat[name.findIndex(item => item === addr2)],lon[name.findIndex(item => item === addr2)]], {radius: 2400, color: "#9800af", fill: true, fillOpacity:1.0, weight: 0 }).bindPopup("<span class=font_size>"+name[name.findIndex(item => item === addr2)+1]+"</span>").addTo(map);
-              //  }
-              //else if (scale == "60"){ //震度6-
-              //    var circle =  L.circle([lat[name.findIndex(item => item === addr2)],lon[name.findIndex(item => item === addr2)]], {radius: 2400, color: "#9800af", fill: true, fillOpacity:1.0, weight: 0 }).bindPopup("<span class=font_size>"+name[name.findIndex(item => item === addr2)+1]+"</span>").addTo(map);
-              //  }
-              //else if (scale == "65"){ //震度6+
-              //    var circle =  L.circle([lat[name.findIndex(item => item === addr2)],lon[name.findIndex(item => item === addr2)]], {radius: 2400, color: "#9800af", fill: true, fillOpacity:1.0, weight: 0 }).bindPopup("<span class=font_size>"+name[name.findIndex(item => item === addr2)+1]+"</span>").addTo(map);
-              //  }
-              //else if(scale == "70"){ //震度7
-                  var circle =  L.circle([lat[name.findIndex(item => item === addr2)],lon[name.findIndex(item => item === addr2)]], {radius: 2400, color: "rgb(255,6,181)", fill: true, fillOpacity:1.0, weight: 0 }).bindPopup("<span class=font_size>"+name[name.findIndex(item => item === addr2)+1]+"</span>").addTo(map);
-              //  }
-              //else{}
-          }
-        });
-        });
-      }
-}
+    }
   </script>
+</head>
 </head>
 <body onload="init()">
   <div id="map" class="max"></div>
-  <div class="infopanel">
-    <a>地震情報<a id="info"></a>
-  </div>
+  <div class="infopanel"> <a>地震情報<a id="info"></a> </div>
 </body>
 </html>
