@@ -25,9 +25,9 @@ span.font_size {
 .shin1 {
     position: fixed; /* 画面上に絶対座標で固定 */
     bottom: 20px; /* 画面 上からの距離 */
-    right: 10px; /* 画面左からの距離 */
-    width: 100px; /* パネルの横幅 */
-    height: 70px; /* パネルの縦幅 */
+    right: 5px; /* 画面左からの距離 */
+    width: 84px; /* パネルの横幅 */
+    height: 26px; /* パネルの縦幅 */
     background-color: white; /* 背景色 */
     color: black; /* 文字色 */
     padding: 10px; /* 背景端からの距離 */
@@ -36,9 +36,9 @@ span.font_size {
 .shin2 {
     position: fixed; /* 画面上に絶対座標で固定 */
     bottom: 20px; /* 画面 上からの距離 */
-    right: 10px; /* 画面左からの距離 */
-    width: 74px; /* パネルの横幅 */
-    height: 57px; /* パネルの縦幅 */
+    right: 5px; /* 画面左からの距離 */
+    width: 84px; /* パネルの横幅 */
+    height: px; /* パネルの縦幅 */
     background-color: white; /* 背景色 */
     color: black; /* 文字色 */
     padding: 10px; /* 背景端からの距離 */
@@ -47,8 +47,8 @@ span.font_size {
 .shin3 {
     position: fixed; /* 画面上に絶対座標で固定 */
     bottom: 20px; /* 画面 上からの距離 */
-    right: 10px; /* 画面左からの距離 */
-    width: 74px; /* パネルの横幅 */
+    right: 5px; /* 画面左からの距離 */
+    width: 84px; /* パネルの横幅 */
     height: 57px; /* パネルの縦幅 */
     background-color: white; /* 背景色 */
     color: black; /* 文字色 */
@@ -58,8 +58,8 @@ span.font_size {
 .shin4 {
     position: fixed; /* 画面上に絶対座標で固定 */
     bottom: 20px; /* 画面 上からの距離 */
-    right: 10px; /* 画面左からの距離 */
-    width: 74px; /* パネルの横幅 */
+    right: 5px; /* 画面左からの距離 */
+    width: 84px; /* パネルの横幅 */
     height: 57px; /* パネルの縦幅 */
     background-color: white; /* 背景色 */
     color: black; /* 文字色 */
@@ -69,8 +69,8 @@ span.font_size {
 .shin5- {
     position: fixed; /* 画面上に絶対座標で固定 */
     bottom: 20px; /* 画面 上からの距離 */
-    right: 10px; /* 画面左からの距離 */
-    width: 74px; /* パネルの横幅 */
+    right: 5px; /* 画面左からの距離 */
+    width: 84px; /* パネルの横幅 */
     height: 57px; /* パネルの縦幅 */
     background-color: white; /* 背景色 */
     color: black; /* 文字色 */
@@ -80,8 +80,8 @@ span.font_size {
 .shin5+ {
     position: fixed; /* 画面上に絶対座標で固定 */
     bottom: 20px; /* 画面 上からの距離 */
-    right: 10px; /* 画面左からの距離 */
-    width: 74px; /* パネルの横幅 */
+    right: 5px; /* 画面左からの距離 */
+    width: 84px; /* パネルの横幅 */
     height: 57px; /* パネルの縦幅 */
     background-color: white; /* 背景色 */
     color: black; /* 文字色 */
@@ -91,8 +91,8 @@ span.font_size {
 .shin6- {
     position: fixed; /* 画面上に絶対座標で固定 */
     bottom: 20px; /* 画面 上からの距離 */
-    right: 10px; /* 画面左からの距離 */
-    width: 74px; /* パネルの横幅 */
+    right: 5px; /* 画面左からの距離 */
+    width: 84px; /* パネルの横幅 */
     height: 57px; /* パネルの縦幅 */
     background-color: white; /* 背景色 */
     color: black; /* 文字色 */
@@ -102,8 +102,8 @@ span.font_size {
 .shin6+ {
     position: fixed; /* 画面上に絶対座標で固定 */
     bottom: 20px; /* 画面 上からの距離 */
-    right: 10px; /* 画面左からの距離 */
-    width: 74px; /* パネルの横幅 */
+    right: 5px; /* 画面左からの距離 */
+    width: 84px; /* パネルの横幅 */
     height: 57px; /* パネルの縦幅 */
     background-color: white; /* 背景色 */
     color: black; /* 文字色 */
@@ -113,8 +113,8 @@ span.font_size {
 .shin7 {
     position: fixed; /* 画面上に絶対座標で固定 */
     bottom: 20px; /* 画面 上からの距離 */
-    right: 10px; /* 画面左からの距離 */
-    width: 74px; /* パネルの横幅 */
+    right: 5px; /* 画面左からの距離 */
+    width: 84px; /* パネルの横幅 */
     height: 57px; /* パネルの縦幅 */
     background-color: white; /* 背景色 */
     color: black; /* 文字色 */
