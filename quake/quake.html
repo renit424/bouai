@@ -62,6 +62,20 @@
               }
               else if (maxScale == "30"){ //震度3
                   maxint = "3"
+                var legend = L.control({
+			            position: "bottomright"
+		            });
+		            legend.onAdd = function(map) {
+			            var div = L.DomUtil.create("div", "info legend");
+			             grades = ["震度3", "震度2", "震度1"],
+				           labels = ["https://bousai.renitapps.com/amedas/image/30mm.png", "https://bousai.renitapps.com/amedas/image/20mm.png", "https://bousai.renitapps.com/amedas/image/10mm.png"];
+			            for (var i = 0; i < grades.length; i++) {
+				              div.innerHTML += grades[i] + (" <img src="+ labels[i] +
+					             " height=40 width=40" + ">") + "<br>";
+			            }
+			            return div;
+		          };
+		              legend.addTo(map);
               }
               else if (maxScale == "40"){ //震度4
                   maxint = "4"
