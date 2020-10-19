@@ -66,7 +66,7 @@ span.font_size {
     padding: 10px; /* 背景端からの距離 */
     z-index: 2000;
 }
-.shin5- {
+.shin50 {
     position: fixed; /* 画面上に絶対座標で固定 */
     bottom: 20px; /* 画面 上からの距離 */
     right: 5px; /* 画面左からの距離 */
@@ -77,7 +77,7 @@ span.font_size {
     padding: 10px; /* 背景端からの距離 */
     z-index: 2000;
 }
-.shin5+ {
+.shin55 {
     position: fixed; /* 画面上に絶対座標で固定 */
     bottom: 20px; /* 画面 上からの距離 */
     right: 5px; /* 画面左からの距離 */
@@ -88,7 +88,7 @@ span.font_size {
     padding: 10px; /* 背景端からの距離 */
     z-index: 2000;
 }
-.shin6- {
+.shin60 {
     position: fixed; /* 画面上に絶対座標で固定 */
     bottom: 20px; /* 画面 上からの距離 */
     right: 5px; /* 画面左からの距離 */
@@ -99,7 +99,7 @@ span.font_size {
     padding: 10px; /* 背景端からの距離 */
     z-index: 2000;
 }
-.shin6+ {
+.shin65 {
     position: fixed; /* 画面上に絶対座標で固定 */
     bottom: 20px; /* 画面 上からの距離 */
     right: 5px; /* 画面左からの距離 */
