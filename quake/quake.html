@@ -97,7 +97,7 @@ function init() {
                 var div = L.DomUtil.create("div", "info legend");
                 var text = "";
                 grades = ["震度3　", "震度2　", "震度1　"],
-                  labels = ["https://bousai.renitapps.com/amedas/image/80mm.png", "https://bousai.renitapps.com/amedas/image/30mm.png", "https://bousai.renitapps.com/amedas/image/20mm.png", "https://bousai.renitapps.com/amedas/image/10mm.png"];
+                  labels = ["https://bousai.renitapps.com/quake/image/shin3.png", "https://bousai.renitapps.com/quake/image/shin2.png", "https://bousai.renitapps.com/quake/image/shin1.png"];
                 for (var i = 0; i < grades.length; i++) {
                   text += grades[i] + ("<img src=" + labels[i] + " height=17 width=17" + ">") + "<br>";
                 }
@@ -114,7 +114,7 @@ function init() {
               legend.onAdd = function (map) {
                 var div = L.DomUtil.create("div", "info legend");
                 var text = "";
-                grades = ["震度3　", "震度2　", "震度1　"],
+                grades = ["震度4　" ,"震度3　", "震度2　", "震度1　"],
                   labels = ["https://bousai.renitapps.com/quake/image/shin4.png", "https://bousai.renitapps.com/quake/image/shin3.png", "https://bousai.renitapps.com/quake/image/shin2.png", "https://bousai.renitapps.com/quake/image/shin1.png"];
                 for (var i = 0; i < grades.length; i++) {
                   text += grades[i] + ("<img src=" + labels[i] + " height=17 width=17" + ">") + "<br>";
