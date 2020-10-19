@@ -22,7 +22,7 @@ span.font_size {
     padding: 10px; /* 背景端からの距離 */
     z-index: 1000;
 }
-.shin1
+.shin1 {
     position: fixed; /* 画面上に絶対座標で固定 */
     bottom: 20px; /* 画面 上からの距離 */
     right: 10px; /* 画面左からの距離 */
@@ -33,7 +33,7 @@ span.font_size {
     padding: 10px; /* 背景端からの距離 */
     z-index: 2000;
 }
-.shin2
+.shin2 {
     position: fixed; /* 画面上に絶対座標で固定 */
     bottom: 20px; /* 画面 上からの距離 */
     right: 10px; /* 画面左からの距離 */
@@ -44,7 +44,73 @@ span.font_size {
     padding: 10px; /* 背景端からの距離 */
     z-index: 2000;
 }
-.shin3
+.shin3 {
+    position: fixed; /* 画面上に絶対座標で固定 */
+    bottom: 20px; /* 画面 上からの距離 */
+    right: 10px; /* 画面左からの距離 */
+    width: 74px; /* パネルの横幅 */
+    height: 57px; /* パネルの縦幅 */
+    background-color: white; /* 背景色 */
+    color: black; /* 文字色 */
+    padding: 10px; /* 背景端からの距離 */
+    z-index: 2000;
+}
+.shin4 {
+    position: fixed; /* 画面上に絶対座標で固定 */
+    bottom: 20px; /* 画面 上からの距離 */
+    right: 10px; /* 画面左からの距離 */
+    width: 74px; /* パネルの横幅 */
+    height: 57px; /* パネルの縦幅 */
+    background-color: white; /* 背景色 */
+    color: black; /* 文字色 */
+    padding: 10px; /* 背景端からの距離 */
+    z-index: 2000;
+}
+.shin5- {
+    position: fixed; /* 画面上に絶対座標で固定 */
+    bottom: 20px; /* 画面 上からの距離 */
+    right: 10px; /* 画面左からの距離 */
+    width: 74px; /* パネルの横幅 */
+    height: 57px; /* パネルの縦幅 */
+    background-color: white; /* 背景色 */
+    color: black; /* 文字色 */
+    padding: 10px; /* 背景端からの距離 */
+    z-index: 2000;
+}
+.shin5+ {
+    position: fixed; /* 画面上に絶対座標で固定 */
+    bottom: 20px; /* 画面 上からの距離 */
+    right: 10px; /* 画面左からの距離 */
+    width: 74px; /* パネルの横幅 */
+    height: 57px; /* パネルの縦幅 */
+    background-color: white; /* 背景色 */
+    color: black; /* 文字色 */
+    padding: 10px; /* 背景端からの距離 */
+    z-index: 2000;
+}
+.shin6- {
+    position: fixed; /* 画面上に絶対座標で固定 */
+    bottom: 20px; /* 画面 上からの距離 */
+    right: 10px; /* 画面左からの距離 */
+    width: 74px; /* パネルの横幅 */
+    height: 57px; /* パネルの縦幅 */
+    background-color: white; /* 背景色 */
+    color: black; /* 文字色 */
+    padding: 10px; /* 背景端からの距離 */
+    z-index: 2000;
+}
+.shin6+ {
+    position: fixed; /* 画面上に絶対座標で固定 */
+    bottom: 20px; /* 画面 上からの距離 */
+    right: 10px; /* 画面左からの距離 */
+    width: 74px; /* パネルの横幅 */
+    height: 57px; /* パネルの縦幅 */
+    background-color: white; /* 背景色 */
+    color: black; /* 文字色 */
+    padding: 10px; /* 背景端からの距離 */
+    z-index: 2000;
+}
+.shin7 {
     position: fixed; /* 画面上に絶対座標で固定 */
     bottom: 20px; /* 画面 上からの距離 */
     right: 10px; /* 画面左からの距離 */
