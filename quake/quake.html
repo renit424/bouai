@@ -105,7 +105,8 @@ function init() {
                 return div;
               };
               legend.addTo(map);
-            } else if (maxScale == "40") { //震度4
+            }
+             else if (maxScale == "40") { //震度4
               maxint = "4"
               var legend = L.control({
                 position: "bottomright"
@@ -123,7 +124,7 @@ function init() {
               };
               legend.addTo(map);
             }
-          } else if (maxScale == "45") { //震度5-
+            else if (maxScale == "45") { //震度5-
             maxint = "5弱"
             var legend = L.control({
               position: "bottomright"
