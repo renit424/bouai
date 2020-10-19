@@ -19,6 +19,6 @@ span.font_size {
     height: 140px; /* パネルの縦幅 */
     background-color: white; /* 背景色 */
     color: black; /* 文字色 */
-    padding: 15px; /* 背景端からの距離 */
+    padding: 10px; /* 背景端からの距離 */
     z-index: 1000;
 }
