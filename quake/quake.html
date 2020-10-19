@@ -15,7 +15,7 @@
     		'https://{s}.basemaps.cartocdn.com/dark_nolabels/{z}/{x}/{y}{r}.png', {
     			attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors &copy; <a href="https://carto.com/attributions">CARTO</a>',
     			subdomains: 'abcd',
-    			maxZoom: 18
+    			maxZoom: 15
     		}).addTo(map);
     	L.control.scale({
     		maxWidth: 200,
@@ -51,7 +51,7 @@
                   lon.push(json2.items[i].lon);
                   name.push(json2.items[i].name);
               }
-              map.setView([json[0].earthquake.hypocenter.latitude,json[0].earthquake.hypocenter.longitude], 5);
+              map.setView([json[0].earthquake.hypocenter.latitude,json[0].earthquake.hypocenter.longitude], 3);
               var maxScale = json[0].earthquake.maxScale;
               var maxint ="";
               if (maxScale == "10"){ //震度1
