@@ -26,7 +26,7 @@ span.font_size {
     position: fixed; /* 画面上に絶対座標で固定 */
     bottom: 20px; /* 画面 上からの距離 */
     right: 5px; /* 画面左からの距離 */
-    width: 84px; /* パネルの横幅 */
+    width: 74px; /* パネルの横幅 */
     height: 26px; /* パネルの縦幅 */
     background-color: white; /* 背景色 */
     color: black; /* 文字色 */
@@ -37,8 +37,8 @@ span.font_size {
     position: fixed; /* 画面上に絶対座標で固定 */
     bottom: 20px; /* 画面 上からの距離 */
     right: 5px; /* 画面左からの距離 */
-    width: 84px; /* パネルの横幅 */
-    height: px; /* パネルの縦幅 */
+    width: 74px; /* パネルの横幅 */
+    height: 52px; /* パネルの縦幅 */
     background-color: white; /* 背景色 */
     color: black; /* 文字色 */
     padding: 10px; /* 背景端からの距離 */
@@ -48,8 +48,8 @@ span.font_size {
     position: fixed; /* 画面上に絶対座標で固定 */
     bottom: 20px; /* 画面 上からの距離 */
     right: 5px; /* 画面左からの距離 */
-    width: 84px; /* パネルの横幅 */
-    height: 57px; /* パネルの縦幅 */
+    width: 74px; /* パネルの横幅 */
+    height: 78px; /* パネルの縦幅 */
     background-color: white; /* 背景色 */
     color: black; /* 文字色 */
     padding: 10px; /* 背景端からの距離 */
@@ -59,8 +59,8 @@ span.font_size {
     position: fixed; /* 画面上に絶対座標で固定 */
     bottom: 20px; /* 画面 上からの距離 */
     right: 5px; /* 画面左からの距離 */
-    width: 84px; /* パネルの横幅 */
-    height: 57px; /* パネルの縦幅 */
+    width: 74px; /* パネルの横幅 */
+    height: 104px; /* パネルの縦幅 */
     background-color: white; /* 背景色 */
     color: black; /* 文字色 */
     padding: 10px; /* 背景端からの距離 */
@@ -70,8 +70,8 @@ span.font_size {
     position: fixed; /* 画面上に絶対座標で固定 */
     bottom: 20px; /* 画面 上からの距離 */
     right: 5px; /* 画面左からの距離 */
-    width: 84px; /* パネルの横幅 */
-    height: 57px; /* パネルの縦幅 */
+    width: 74px; /* パネルの横幅 */
+    height: 130px; /* パネルの縦幅 */
     background-color: white; /* 背景色 */
     color: black; /* 文字色 */
     padding: 10px; /* 背景端からの距離 */
@@ -81,8 +81,8 @@ span.font_size {
     position: fixed; /* 画面上に絶対座標で固定 */
     bottom: 20px; /* 画面 上からの距離 */
     right: 5px; /* 画面左からの距離 */
-    width: 84px; /* パネルの横幅 */
-    height: 57px; /* パネルの縦幅 */
+    width: 74px; /* パネルの横幅 */
+    height: 156px; /* パネルの縦幅 */
     background-color: white; /* 背景色 */
     color: black; /* 文字色 */
     padding: 10px; /* 背景端からの距離 */
@@ -92,8 +92,8 @@ span.font_size {
     position: fixed; /* 画面上に絶対座標で固定 */
     bottom: 20px; /* 画面 上からの距離 */
     right: 5px; /* 画面左からの距離 */
-    width: 84px; /* パネルの横幅 */
-    height: 57px; /* パネルの縦幅 */
+    width: 74px; /* パネルの横幅 */
+    height: 182px; /* パネルの縦幅 */
     background-color: white; /* 背景色 */
     color: black; /* 文字色 */
     padding: 10px; /* 背景端からの距離 */
@@ -103,8 +103,8 @@ span.font_size {
     position: fixed; /* 画面上に絶対座標で固定 */
     bottom: 20px; /* 画面 上からの距離 */
     right: 5px; /* 画面左からの距離 */
-    width: 84px; /* パネルの横幅 */
-    height: 57px; /* パネルの縦幅 */
+    width: 74px; /* パネルの横幅 */
+    height: 208px; /* パネルの縦幅 */
     background-color: white; /* 背景色 */
     color: black; /* 文字色 */
     padding: 10px; /* 背景端からの距離 */
@@ -114,8 +114,8 @@ span.font_size {
     position: fixed; /* 画面上に絶対座標で固定 */
     bottom: 20px; /* 画面 上からの距離 */
     right: 5px; /* 画面左からの距離 */
-    width: 84px; /* パネルの横幅 */
-    height: 57px; /* パネルの縦幅 */
+    width: 74px; /* パネルの横幅 */
+    height: 234px; /* パネルの縦幅 */
     background-color: white; /* 背景色 */
     color: black; /* 文字色 */
     padding: 10px; /* 背景端からの距離 */
