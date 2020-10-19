@@ -1,0 +1,228 @@
+[
+  {
+    "code": 551,
+    "earthquake": {
+      "domesticTsunami": "None",
+      "foreignTsunami": "Unknown",
+      "hypocenter": {
+        "depth": 10,
+        "latitude": 32.8,
+        "longitude": 130.8,
+        "magnitude": 5.7,
+        "name": "熊本県熊本地方"
+      },
+      "maxScale": 55,
+      "time": "2016/04/14 22:07:00"
+    },
+    "id": "570fa64e843b7342eb000001",
+    "issue": {
+      "correct": "None",
+      "source": "気象庁",
+      "time": "2016/04/14 22:12:00",
+      "type": "ScaleAndDestination"
+    },
+    "points": [
+      {
+        "addr": "熊本県熊本",
+        "isArea": true,
+        "pref": "熊本県",
+        "scale": 55
+      },
+      {
+        "addr": "福岡県筑後",
+        "isArea": true,
+        "pref": "福岡県",
+        "scale": 40
+      },
+      {
+        "addr": "長崎県島原半島",
+        "isArea": true,
+        "pref": "長崎県",
+        "scale": 40
+      },
+      {
+        "addr": "熊本県阿蘇",
+        "isArea": true,
+        "pref": "熊本県",
+        "scale": 40
+      },
+      {
+        "addr": "熊本県天草・芦北",
+        "isArea": true,
+        "pref": "熊本県",
+        "scale": 40
+      },
+      {
+        "addr": "宮崎県北部平野部",
+        "isArea": true,
+        "pref": "宮崎県",
+        "scale": 40
+      },
+      {
+        "addr": "宮崎県北部山沿い",
+        "isArea": true,
+        "pref": "宮崎県",
+        "scale": 40
+      },
+      {
+        "addr": "福岡県福岡",
+        "isArea": true,
+        "pref": "福岡県",
+        "scale": 30
+      },
+      {
+        "addr": "福岡県筑豊",
+        "isArea": true,
+        "pref": "福岡県",
+        "scale": 30
+      },
+      {
+        "addr": "佐賀県北部",
+        "isArea": true,
+        "pref": "佐賀県",
+        "scale": 30
+      },
+      {
+        "addr": "佐賀県南部",
+        "isArea": true,
+        "pref": "佐賀県",
+        "scale": 30
+      },
+      {
+        "addr": "長崎県北部",
+        "isArea": true,
+        "pref": "長崎県",
+        "scale": 30
+      },
+      {
+        "addr": "長崎県南西部",
+        "isArea": true,
+        "pref": "長崎県",
+        "scale": 30
+      },
+      {
+        "addr": "熊本県球磨",
+        "isArea": true,
+        "pref": "熊本県",
+        "scale": 30
+      },
+      {
+        "addr": "大分県中部",
+        "isArea": true,
+        "pref": "大分県",
+        "scale": 30
+      },
+      {
+        "addr": "大分県南部",
+        "isArea": true,
+        "pref": "大分県",
+        "scale": 30
+      },
+      {
+        "addr": "大分県西部",
+        "isArea": true,
+        "pref": "大分県",
+        "scale": 30
+      },
+      {
+        "addr": "宮崎県南部平野部",
+        "isArea": true,
+        "pref": "宮崎県",
+        "scale": 30
+      },
+      {
+        "addr": "宮崎県南部山沿い",
+        "isArea": true,
+        "pref": "宮崎県",
+        "scale": 30
+      },
+      {
+        "addr": "鹿児島県薩摩",
+        "isArea": true,
+        "pref": "鹿児島県",
+        "scale": 30
+      },
+      {
+        "addr": "益城町",
+        "isArea": false,
+        "pref": "",
+        "scale": 55
+      },
+      {
+        "addr": "西原村",
+        "isArea": false,
+        "pref": "",
+        "scale": 50
+      },
+      {
+        "addr": "熊本東区",
+        "isArea": false,
+        "pref": "",
+        "scale": 50
+      },
+      {
+        "addr": "玉名市",
+        "isArea": false,
+        "pref": "",
+        "scale": 45
+      },
+      {
+        "addr": "菊池市",
+        "isArea": false,
+        "pref": "",
+        "scale": 45
+      },
+      {
+        "addr": "大津町",
+        "isArea": false,
+        "pref": "",
+        "scale": 45
+      },
+      {
+        "addr": "菊陽町",
+        "isArea": false,
+        "pref": "",
+        "scale": 45
+      },
+      {
+        "addr": "熊本美里町",
+        "isArea": false,
+        "pref": "",
+        "scale": 45
+      },
+      {
+        "addr": "合志市",
+        "isArea": false,
+        "pref": "",
+        "scale": 45
+      },
+      {
+        "addr": "熊本中央区",
+        "isArea": false,
+        "pref": "",
+        "scale": 45
+      },
+      {
+        "addr": "熊本西区",
+        "isArea": false,
+        "pref": "",
+        "scale": 45
+      },
+      {
+        "addr": "熊本南区",
+        "isArea": false,
+        "pref": "",
+        "scale": 45
+      },
+      {
+        "addr": "嘉島町",
+        "isArea": false,
+        "pref": "",
+        "scale": 46
+      }
+    ],
+    "time": "2016/04/14 22:12:00",
+    "user-agent": "quake_checker/analyzer 20130830",
+    "ver": "20140906"
+  }
+]
