@@ -71,13 +71,12 @@
 				           labels = ["https://bousai.renitapps.com/amedas/image/30mm.png", "https://bousai.renitapps.com/amedas/image/20mm.png", "https://bousai.renitapps.com/amedas/image/10mm.png"];
 				    var text;
 				    for (var i = 0; i < grades.length; i++) {
-				              text += grades[i] + ("<img src="+ labels[i] +
-					             " height=40 width=40" + ">") + "<br>";
+				              text += "<span>"+grades[i]+ ">" + ("<img src="+ labels[i] +" height=25 width=25" + ">") + "<br>";
 			            }
 				    div.innerHTML += "<div class="+"usageguide"+">"+text+">";
 			            return div;
 		          };
-		              legend.addTo(map);
+		          legend.addTo(map);
               }
               else if (maxScale == "40"){ //震度4
                   maxint = "4"
