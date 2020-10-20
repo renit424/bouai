@@ -22,7 +22,7 @@ function init() {
           
           }
           else if (issue == "Foreign"){
-          
+            appendScript("/quake/type/Foreign.js");
           }
           else if (issue == "Other"){
           
@@ -31,3 +31,8 @@ function init() {
        });
      });
   }
+function appendScript(URL) {
+	var el = document.createElement('script');
+	el.src = URL;
+	document.body.appendChild(el);
+};
