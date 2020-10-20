@@ -32,7 +32,14 @@
           
           }
           else if (issue == "Foreign"){
-            appendScript("/quake/type/Foreign.js");
+		  // SCRIPTタグの生成
+var el = document.createElement("script");
+ 
+// SCRIPTタグのSRC属性に読み込みたいファイルを指定
+el.src = "/quake/type/Foreign.js";
+ 
+// BODY要素の最後に追加
+document.body.appendChild(el);
           }
           else if (issue == "Other"){
           
@@ -41,11 +48,6 @@
        });
      });
   }
-function appendScript(URL) {
-	var el = document.createElement('script');
-	el.src = URL;
-	document.body.appendChild(el);
-};
 </script>
 </head>
 <body onload="init()">
