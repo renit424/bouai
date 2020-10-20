@@ -1,5 +1,4 @@
-function init() {
-  var map = L.map('map', {
+var map = L.map('map', {
     zoomControl: false
   });
   L.tileLayer('https://{s}.basemaps.cartocdn.com/dark_nolabels/{z}/{x}/{y}{r}.png', {
@@ -129,5 +128,4 @@ function init() {
           }
         });
     });
-}
 }
