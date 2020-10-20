@@ -1,4 +1,4 @@
-  var map = L.map('map', {
+var map = L.map('map', {
     zoomControl: false
   });
   L.tileLayer('https://{s}.basemaps.cartocdn.com/dark_nolabels/{z}/{x}/{y}{r}.png', {
@@ -299,6 +299,7 @@
                 }).bindPopup("<span class=font_size>" + name[name.findIndex(item => item === addr2) + 1] + "</span>").addTo(map);
               } else {}
             }
-          });
-        });
-    }
+        }
+    });
+});
+  }
