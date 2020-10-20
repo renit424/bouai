@@ -299,5 +299,6 @@
                 }).bindPopup("<span class=font_size>" + name[name.findIndex(item => item === addr2) + 1] + "</span>").addTo(map);
               } else {}
             }
-          };
+          });
         });
+    }
