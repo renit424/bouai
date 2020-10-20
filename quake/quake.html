@@ -382,7 +382,7 @@ function init() {
             else{
               foreign = "津波の可能性";
             }
-          var info = document.getElementById("info"); info.innerHTML = "遠方地震情報<br>発生時刻 " + json[0].earthquake.time.split('/').join('月').split(' ').join('日').slice(5) + "<br>震源地 " + json[0].earthquake.hypocenter.name + "<br>深さ " + json[0].earthquake.hypocenter.depth + "km<br>規模(M) " + json[0].earthquake.hypocenter.magnitude + "<br>国内への津波の有無 "+ tsunami + "<br>海外での津波の有無 " + foreign;
+          var info = document.getElementById("info"); info.innerHTML = "遠方地震情報<br>発生時刻 " + json[0].earthquake.time.split('/').join('月').split(' ').join('日').slice(5) + "<br>震源地 " + json[0].earthquake.hypocenter.name + "<br>深さ " + json[0].earthquake.hypocenter.depth + "km<br>規模(M) " + json[0].earthquake.hypocenter.magnitude + "<br>国内津波 "+ tsunami + "<br>海外津波 " + foreign;
           var myIcon = L.icon({
             iconUrl: 'icon.png',
             iconSize: [30, 30]
