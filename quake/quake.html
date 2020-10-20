@@ -8,47 +8,46 @@
   <script src="https://unpkg.com/leaflet@1.4.0/dist/leaflet.js"></script>
   <script type="text/javascript" src="https://api.renitapps.com/quake.php"></script>
   <script>
-  function init() {
-    const url = 'https://api.renitapps.com/quake.php';
-    //const url = 'https://bousai.renitapps.com/quake/test/20180906Hokkaido.json';
-    //const url = 'quake2.json';
-    const url2 = 'stations.json';
-    fetch(url).then(function (response) {
-      return response.json();
-    }).then(function (json) {
-        fetch(url2).then(function (response) {
-          return response.json();
-        }).then(function (json2) {
-          var issue = json[0].issue.type; 
-          if (issue == "ScalePrompt"){
-          }
-          else if (issue == "Destination"){
-          
-          }
-          else if (issue == "ScaleAndDestination"){
-          
-          }
-          else if (issue == "DetailScale"){
-          
-          }
-          else if (issue == "Foreign"){
-		  // SCRIPTタグの生成
-var el = document.createElement("script");
- 
-// SCRIPTタグのSRC属性に読み込みたいファイルを指定
-el.src = "/quake/type/Foreign.js";
- 
-// BODY要素の最後に追加
-document.body.appendChild(el);
-          }
-          else if (issue == "Other"){
-          
-          }
-          else{}
+    function init() {
+      const url = 'https://api.renitapps.com/quake.php';
+      //const url = 'https://bousai.renitapps.com/quake/test/20180906Hokkaido.json';
+      //const url = 'quake2.json';
+      fetch(url).then(function (response) {
+        return response.json();
+      }).then(function (json) {
+            var issue = json[0].issue.type; 
+            if (issue == "ScalePrompt"){
+	       var el = document.createElement("script");
+               el.src = "/quake/type/ScalePrompt.js";
+               document.body.appendChild(el);
+            }
+            else if (issue == "Destination"){
+               var el = document.createElement("script");
+               el.src = "/quake/type/Destination.js";
+               document.body.appendChild(el);
+            }
+            else if (issue == "ScaleAndDestination"){
+               var el = document.createElement("script");
+               el.src = "/quake/type/ScaleAndDestination.js";
+               document.body.appendChild(el);
+            }
+            else if (issue == "DetailScale"){
+               var el = document.createElement("script");
+               el.src = "/quake/type/DetailScale.js";
+               document.body.appendChild(el);
+            }
+            else if (issue == "Foreign"){
+               var el = document.createElement("script");
+               el.src = "/quake/type/Foreign.js";
+               document.body.appendChild(el);
+            }
+            else if (issue == "Other"){
+            
+            }
+            else{}
        });
-     });
-  }
-</script>
+    }
+  </script>
 </head>
 <body onload="init()">
   <div id="map" class="max"></div>
