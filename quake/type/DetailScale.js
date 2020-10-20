@@ -1,4 +1,3 @@
-function init() {
   var map = L.map('map', {
     zoomControl: false
   });
