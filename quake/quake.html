@@ -52,6 +52,9 @@ function init() {
               name.push(json2.items[i].name);
             }
             map.setView([json[0].earthquake.hypocenter.latitude, json[0].earthquake.hypocenter.longitude], 9);
+          var issue = json[0].issue.type;  
+          console.log(issue);
+            if (issue == "DetailScale"){
             var maxScale = json[0].earthquake.maxScale;
             var maxint = "";
             if (maxScale == "10") { //震度1
@@ -305,6 +308,7 @@ function init() {
               }).bindPopup("<span class=font_size>" + name[name.findIndex(item => item === addr2) + 1] + "</span>").addTo(map);
             } else {}
           }
+            }
         });
     });
 }
@@ -314,7 +318,7 @@ function init() {
 </head>
 <body onload="init()">
   <div id="map" class="max"></div>
-  <div class="infopanel"> <a>地震情報<a id="info"></a> </div>
+  <div class="infopanel"><a id="info"></a> </div>
   
 </body>
 </html>
