@@ -202,7 +202,7 @@ var map = L.map('map', {
               legend.addTo(map);
             } else {}
             var info = document.getElementById("info");
-            info.innerHTML = "<br>発生時刻 " + json[0].earthquake.time.split('/').join('月').split(' ').join('日').slice(5) + "<br>最大震度 " + maxint + "<br>震源地 " + json[0].earthquake.hypocenter.name + "<br>深さ " + json[0].earthquake.hypocenter.depth + "km<br>規模(M) " + json[0].earthquake.hypocenter.magnitude;
+            info.innerHTML = "<span class=font_size>各地の震度</span>" + "<br>発生時刻 " + json[0].earthquake.time.split('/').join('月').split(' ').join('日').slice(5) + "<br>最大震度 " + maxint + "<br>震源地 " + json[0].earthquake.hypocenter.name + "<br>深さ " + json[0].earthquake.hypocenter.depth + "km<br>規模(M) " + json[0].earthquake.hypocenter.magnitude;
             var myIcon = L.icon({
               iconUrl: 'icon.png',
               iconSize: [30, 30]
