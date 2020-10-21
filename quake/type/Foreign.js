@@ -14,7 +14,7 @@ L.control.scale({
 L.control.zoom({
   position: 'topright'
 }).addTo(map);
-const url = 'https://api.p2pquake.net/v2/jma/quake?limit=1&quake_type=Foreign';
+const url = 'https://api.renitapps.com/quake.php';
 fetch(url).then(function (response) {
 return response.json();
 }).then(function (json) {
