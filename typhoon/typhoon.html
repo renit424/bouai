@@ -24,7 +24,7 @@
         Typhoon_01();
         function Typhoon_01() {
           var Line_W = 2;
-          const url = 'http://agora.ex.nii.ac.jp/digital-typhoon/json/wnp/202014.ja.json';
+          const url = 'http://agora.ex.nii.ac.jp/digital-typhoon/json/wnp/2020117.ja.json';
           var json = new XMLHttpRequest();		  // XMLHttpRequest オブジェクトを生成する
             json.onreadystatechange = function() {		  // XMLHttpRequest オブジェクトの状態が変化した際に呼び出されるイベントハンドラ
             if(json.readyState == 4 && json.status == 200){ // サーバーからのレスポンスが完了し、かつ、通信が正常に終了した場合
@@ -99,7 +99,7 @@
             Layer_503[i] = Circle_shape[i];
             Layer_503[i].addTo(map);
           }
-       const url2 = 'http://agora.ex.nii.ac.jp/digital-typhoon/json/forecast/wnp/202014.ja.json';
+       const url2 = 'http://agora.ex.nii.ac.jp/digital-typhoon/json/forecast/wnp/202017.ja.json';
             var json2 = new XMLHttpRequest();		  // XMLHttpRequest オブジェクトを生成する
             json2.onreadystatechange = function() {		  // XMLHttpRequest オブジェクトの状態が変化した際に呼び出されるイベントハンドラ
             if(json2.readyState == 4 && json2.status == 200){ // サーバーからのレスポンスが完了し、かつ、通信が正常に終了した場合
