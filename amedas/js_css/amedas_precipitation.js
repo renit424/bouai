@@ -174,7 +174,7 @@ function init() {
 				text += grades[i] + (" <img src=/amedas/" + /image/ + labels[i] +
 					" height=20 width=20" + ">") + "<br>";
 			}
-			div.innerHTML = "<span class=font_size><div class=panel>"+text+"</div></span>";
+			div.innerHTML = ("<span class=font_size><div class=panel>"+text+"</div></span>");
 			return div;
 		};
 		legend.addTo(map);
