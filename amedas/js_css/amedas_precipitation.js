@@ -162,6 +162,7 @@ function init() {
 			position: "bottomright"
 		});
 		legend.onAdd = function(map) {
+			var text;
 			var div = L.DomUtil.create("div", "info legend");
 			grades = ["80mm～", "50mm～", "30mm～", "20mm～", "10mm～", " 5mm～", " 1mm～",
 					" ～1mm"
@@ -170,9 +171,10 @@ function init() {
 					"5mm.png", "1mm-.png", "1mm.png"
 				];
 			for (var i = 0; i < grades.length; i++) {
-				div.innerHTML += grades[i] + (" <img src=/amedas/" + /image/ + labels[i] +
+				text += grades[i] + (" <img src=/amedas/" + /image/ + labels[i] +
 					" height=20 width=20" + ">") + "<br>";
 			}
+			div.innerHTML += "<span class=font_size><div class="panel">"+text+"</div></span>";
 			return div;
 		};
 		legend.addTo(map);
