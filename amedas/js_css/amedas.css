@@ -27,7 +27,7 @@ span.font_size {
     bottom: 20px; /* 画面 上からの距離 */
     right: 5px; /* 画面左からの距離 */
     width: 90px; /* パネルの横幅 */
-    height: 250px; /* パネルの縦幅 */
+    height: 220px; /* パネルの縦幅 */
     background-color: #262626; /* 背景色 */
     color: white; /* 文字色 */
     padding: 10px; /* 背景端からの距離 */
