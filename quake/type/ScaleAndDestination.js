@@ -216,7 +216,6 @@ if (issue == "ScaleAndDestination") {
     icon: myIcon
   }).bindPopup("<span class=font_size>震源地：" + json[0].earthquake.hypocenter.name + "</span>").addTo(map);
 }
-}
 });
 });
 }
