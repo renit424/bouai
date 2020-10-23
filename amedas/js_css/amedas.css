@@ -26,9 +26,9 @@ span.font_size {
     position: fixed; /* 画面上に絶対座標で固定 */
     bottom: 20px; /* 画面 上からの距離 */
     right: 5px; /* 画面左からの距離 */
-    width: 100px; /* パネルの横幅 */
-    height: 300px; /* パネルの縦幅 */
-    background-color: rgb(221, 221, 221); /* 背景色 */
+    width: 90px; /* パネルの横幅 */
+    height: 250px; /* パネルの縦幅 */
+    background-color: #262626; /* 背景色 */
     color: white; /* 文字色 */
     padding: 10px; /* 背景端からの距離 */
     z-index: 2000;
