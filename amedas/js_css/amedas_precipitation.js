@@ -4,7 +4,7 @@ function init() {
 	}).setView([37, 135], 5);
 	L.tileLayer(
 		'https://{s}.basemaps.cartocdn.com/dark_nolabels/{z}/{x}/{y}{r}.png', {
-			attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors &copy; <a href="https://carto.com/attributions">CARTO</a>',
+			attribution: '&copy; <a href="https://jjwd.info/">JJWD</a>& <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors &copy; <a href="https://carto.com/attributions">CARTO</a>',
 			subdomains: 'abcd',
 			maxZoom: 18
 		}).addTo(map);
@@ -162,17 +162,15 @@ function init() {
 			position: "bottomright"
 		});
 		legend.onAdd = function(map) {
-			var text;
 			var div = L.DomUtil.create("div", "info legend");
-			grades = ["80mm～", "50mm～", "30mm～", "20mm～", "10mm～", " 5mm～", " 1mm～",
-					" ～1mm"
-				],
-				labels = ["80mm.png", "50mm.png", "30mm.png", "20mm.png", "10mm.png",
-					"5mm.png", "1mm-.png", "1mm.png"
-				];
+			var text = "";
+			grades = ["80mm～", "50mm～", "30mm～", "20mm～", "10mm～", " 5mm～ ", " 1mm～ ",
+					" ～1mm "],
+			labels = ["80mm.png", "50mm.png", "30mm.png", "20mm.png", "10mm.png",
+					"5mm.png", "1mm-.png", "1mm.png"];
 			for (var i = 0; i < grades.length; i++) {
 				text += grades[i] + (" <img src=/amedas/" + /image/ + labels[i] +
-					" height=20 width=20" + ">") + "<br>";
+					" height=17 width=17" + ">") + "<br>";
 			}
 			div.innerHTML = ("<span class=font_size><div class=panel>"+text+"</div></span>");
 			return div;
