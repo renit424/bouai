@@ -1,122 +1,120 @@
 var map = L.map('map', {
-    zoomControl: false
-  });
-  L.tileLayer('https://{s}.basemaps.cartocdn.com/dark_nolabels/{z}/{x}/{y}{r}.png', {
-attribution: '&copy; <a href="https://www.p2pquake.net/">P2P地震情報</a> <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors &copy; <a href="https://carto.com/attributions">CARTO</a>',
-    subdomains: 'abcd',
-    maxZoom: 15
-  }).addTo(map);
-  L.control.scale({
-    maxWidth: 200,
-    position: 'bottomleft',
-    imperial: false
-  }).addTo(map);
-  L.control.zoom({
-    position: 'topright'
-  }).addTo(map);
-  quake();
+  zoomControl: false
+});
+L.tileLayer('https://{s}.basemaps.cartocdn.com/dark_nolabels/{z}/{x}/{y}{r}.png', {
+  attribution: '&copy; <a href="https://www.p2pquake.net/">P2P地震情報</a> <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors &copy; <a href="https://carto.com/attributions">CARTO</a>',
+  subdomains: 'abcd',
+  maxZoom: 15
+}).addTo(map);
+L.control.scale({
+  maxWidth: 200,
+  position: 'bottomleft',
+  imperial: false
+}).addTo(map);
+L.control.zoom({
+  position: 'topright'
+}).addTo(map);
+quake();
 
-  function quake() {
-    var Line_W = 2;
-    var len = 0;
-    var lat = [];
-    var lon = [];
-    var name = [];
-    var sclae;
-    var s = [];
-    var addr2;
-    const url = 'https://api.renitapps.com/quake.php';
-    //const url = 'https://bousai.renitapps.com/quake/test/20180906Hokkaido.json';
-    //const url = 'quake2.json';
-    const url2 = 'stations.json';
-    fetch(url).then(function (response) {
-      return response.json();
-    }).then(function (json) {
-        fetch(url2).then(function (response) {
-          return response.json();
-        }).then(function (json2) {
-            len2 = Object.keys(json2['items']).length - 1;
-            for (var i = 0; i <= len2; i++) {
-              lat.push(json2.items[i].lat);
-              lon.push(json2.items[i].lon);
-              name.push(json2.items[i].name);
-            }
-            map.setView([json[0].earthquake.hypocenter.latitude, json[0].earthquake.hypocenter.longitude], 9);
-          var issue = json[0].issue.type;  
+function quake() {
+  var Line_W = 2;
+  var len = 0;
+  var lat = [];
+  var lon = [];
+  var name = [];
+  var sclae;
+  var s = [];
+  var addr2;
+  const url = 'https://api.renitapps.com/quake.php';
+  //const url = 'https://bousai.renitapps.com/quake/test/20180906Hokkaido.json';
+  //const url = 'quake2.json';
+  const url2 = 'stations.json';
+  fetch(url).then(function (response) {
+    return response.json();
+  }).then(function (json) {
+      fetch(url2).then(function (response) {
+        return response.json();
+      }).then(function (json2) {
+          len2 = Object.keys(json2['items']).length - 1;
+          for (var i = 0; i <= len2; i++) {
+            lat.push(json2.items[i].lat);
+            lon.push(json2.items[i].lon);
+            name.push(json2.items[i].name);
+          }
+          map.setView([json[0].earthquake.hypocenter.latitude, json[0].earthquake.hypocenter.longitude], 9);
+          var issue = json[0].issue.type;
           console.log(issue);
-            var maxScale = json[0].earthquake.maxScale;
-            var maxint = "";
-            if (maxScale == "10") { //震度1
-              maxint = "1"
-              var legend = L.control({
-                position: "bottomright"
-              });
-              legend.onAdd = function (map) {
-                var div = L.DomUtil.create("div", "info legend");
-                var text = "";
-                grades = ["震度1　"],
-                  labels = ["https://bousai.renitapps.com/quake/image/shin1.png"];
-                for (var i = 0; i < grades.length; i++) {
-                  text += grades[i] + ("<img src=" + labels[i] + " height=17 width=17" + ">") + "<br>";
-                }
-                div.innerHTML = ("<span class=font_size><div class=" + "shin1" + ">" + text + "</div></span>");
-                return div;
-              };
-              legend.addTo(map);
-            } else if (maxScale == "20") { //震度2
-              maxint = "2"
-              var legend = L.control({
-                position: "bottomright"
-              });
-              legend.onAdd = function (map) {
-                var div = L.DomUtil.create("div", "info legend");
-                var text = "";
-                grades = ["震度2　", "震度1　"],
-                  labels = ["https://bousai.renitapps.com/quake/image/shin2.png", "https://bousai.renitapps.com/quake/image/shin1.png"];
-                for (var i = 0; i < grades.length; i++) {
-                  text += grades[i] + ("<img src=" + labels[i] + " height=17 width=17" + ">") + "<br>";
-                }
-                div.innerHTML = ("<span class=font_size><div class=" + "shin2" + ">" + text + "</div></span>");
-                return div;
-              };
-              legend.addTo(map);
-            } else if (maxScale == "30") { //震度3
-              maxint = "3"
-              var legend = L.control({
-                position: "bottomright"
-              });
-              legend.onAdd = function (map) {
-                var div = L.DomUtil.create("div", "info legend");
-                var text = "";
-                grades = ["震度3　", "震度2　", "震度1　"],
-                  labels = ["https://bousai.renitapps.com/quake/image/shin3.png", "https://bousai.renitapps.com/quake/image/shin2.png", "https://bousai.renitapps.com/quake/image/shin1.png"];
-                for (var i = 0; i < grades.length; i++) {
-                  text += grades[i] + ("<img src=" + labels[i] + " height=17 width=17" + ">") + "<br>";
-                }
-                div.innerHTML = ("<span class=font_size><div class=" + "shin3" + ">" + text + "</div></span>");
-                return div;
-              };
-              legend.addTo(map);
-            }
-             else if (maxScale == "40") { //震度4
-              maxint = "4"
-              var legend = L.control({
-                position: "bottomright"
-              });
-              legend.onAdd = function (map) {
-                var div = L.DomUtil.create("div", "info legend");
-                var text = "";
-                grades = ["震度4　" ,"震度3　", "震度2　", "震度1　"],
-                  labels = ["https://bousai.renitapps.com/quake/image/shin4.png", "https://bousai.renitapps.com/quake/image/shin3.png", "https://bousai.renitapps.com/quake/image/shin2.png", "https://bousai.renitapps.com/quake/image/shin1.png"];
-                for (var i = 0; i < grades.length; i++) {
-                  text += grades[i] + ("<img src=" + labels[i] + " height=17 width=17" + ">") + "<br>";
-                }
-                div.innerHTML = ("<span class=font_size><div class=" + "shin4" + ">" + text + "</div></span>");
-                return div;
-              };
-              legend.addTo(map);
-            }
-            else if (maxScale == "45") { //震度5-
+          var maxScale = json[0].earthquake.maxScale;
+          var maxint = "";
+          if (maxScale == "10") { //震度1
+            maxint = "1"
+            var legend = L.control({
+              position: "bottomright"
+            });
+            legend.onAdd = function (map) {
+              var div = L.DomUtil.create("div", "info legend");
+              var text = "";
+              grades = ["震度1　"],
+                labels = ["https://bousai.renitapps.com/quake/image/shin1.png"];
+              for (var i = 0; i < grades.length; i++) {
+                text += grades[i] + ("<img src=" + labels[i] + " height=17 width=17" + ">") + "<br>";
+              }
+              div.innerHTML = ("<span class=font_size><div class=" + "shin1" + ">" + text + "</div></span>");
+              return div;
+            };
+            legend.addTo(map);
+          } else if (maxScale == "20") { //震度2
+            maxint = "2"
+            var legend = L.control({
+              position: "bottomright"
+            });
+            legend.onAdd = function (map) {
+              var div = L.DomUtil.create("div", "info legend");
+              var text = "";
+              grades = ["震度2　", "震度1　"],
+                labels = ["https://bousai.renitapps.com/quake/image/shin2.png", "https://bousai.renitapps.com/quake/image/shin1.png"];
+              for (var i = 0; i < grades.length; i++) {
+                text += grades[i] + ("<img src=" + labels[i] + " height=17 width=17" + ">") + "<br>";
+              }
+              div.innerHTML = ("<span class=font_size><div class=" + "shin2" + ">" + text + "</div></span>");
+              return div;
+            };
+            legend.addTo(map);
+          } else if (maxScale == "30") { //震度3
+            maxint = "3"
+            var legend = L.control({
+              position: "bottomright"
+            });
+            legend.onAdd = function (map) {
+              var div = L.DomUtil.create("div", "info legend");
+              var text = "";
+              grades = ["震度3　", "震度2　", "震度1　"],
+                labels = ["https://bousai.renitapps.com/quake/image/shin3.png", "https://bousai.renitapps.com/quake/image/shin2.png", "https://bousai.renitapps.com/quake/image/shin1.png"];
+              for (var i = 0; i < grades.length; i++) {
+                text += grades[i] + ("<img src=" + labels[i] + " height=17 width=17" + ">") + "<br>";
+              }
+              div.innerHTML = ("<span class=font_size><div class=" + "shin3" + ">" + text + "</div></span>");
+              return div;
+            };
+            legend.addTo(map);
+          } else if (maxScale == "40") { //震度4
+            maxint = "4"
+            var legend = L.control({
+              position: "bottomright"
+            });
+            legend.onAdd = function (map) {
+              var div = L.DomUtil.create("div", "info legend");
+              var text = "";
+              grades = ["震度4　", "震度3　", "震度2　", "震度1　"],
+                labels = ["https://bousai.renitapps.com/quake/image/shin4.png", "https://bousai.renitapps.com/quake/image/shin3.png", "https://bousai.renitapps.com/quake/image/shin2.png", "https://bousai.renitapps.com/quake/image/shin1.png"];
+              for (var i = 0; i < grades.length; i++) {
+                text += grades[i] + ("<img src=" + labels[i] + " height=17 width=17" + ">") + "<br>";
+              }
+              div.innerHTML = ("<span class=font_size><div class=" + "shin4" + ">" + text + "</div></span>");
+              return div;
+            };
+            legend.addTo(map);
+          } else if (maxScale == "45") { //震度5-
             maxint = "5弱"
             var legend = L.control({
               position: "bottomright"
@@ -202,17 +200,46 @@ attribution: '&copy; <a href="https://www.p2pquake.net/">P2P地震情報</a> <a 
             };
             legend.addTo(map);
           } else {}
+          var tsunami = "";
+          var domesticTsunami = json[0].earthquake.domesticTsunami;
+          if (domesticTsunami == "None") {
+            tsunami = "なし";
+          } else if (domesticTsunami == "Unknown") {
+            tsunami = "不明";
+          } else if (domesticTsunami == "Checking") {
+            tsunami = "調査中";
+          } else if (domesticTsunami == "NonEffective") {
+            tsunami = "若干の海面変動";
+          } else if (domesticTsunami == "Watch") {
+            tsunami = "津波注意報";
+          } else if (domesticTsunami == "Warning") {
+            tsunami = "津波予報(種類不明)";
+          }
+          if (domesticTsunami == "None") {
+            tsunami = "なし";
+          } else if (domesticTsunami == "Unknown") {
+            tsunami = "不明";
+          } else if (domesticTsunami == "Checking") {
+            tsunami = "調査中";
+          } else if (domesticTsunami == "NonEffective") {
+            tsunami = "若干の海面変動";
+          } else if (domesticTsunami == "Watch") {
+            tsunami = "津波注意報";
+          } else if (domesticTsunami == "Warning") {
+            tsunami = "津波予報(種類不明)";
+          } else {}
           var info;
-          if (json[0].earthquake.hypocenter.depth == -1){
-              info = document.getElementById("info"); info.innerHTML = "<br>発生時刻 " + json[0].earthquake.time.split('/').join('月').split(' ').join('日').slice(5) + "<br>最大震度 " + maxint + "<br>" + "<br>深さ " + "不明<br>規模(M) " + json[0].earthquake.hypocenter.magnitude;
+          if (json[0].earthquake.hypocenter.depth == -1) {
+            info = document.getElementById("info");
+            info.innerHTML = "<br>発生時刻 " + json[0].earthquake.time.split('/').join('月').split(' ').join('日').slice(5) + "<br>最大震度 " + maxint + "<br>" + "<br>深さ " + "不明<br>規模(M) " + json[0].earthquake.hypocenter.magnitude;
+          } else {
+            info = document.getElementById("info");
+            info.innerHTML = "<br>発生時刻 " + json[0].earthquake.time.split('/').join('月').split(' ').join('日').slice(5) + "<br>最大震度 " + maxint + "<br>震源地 " + json[0].earthquake.hypocenter.name + "<br>深さ " + json[0].earthquake.hypocenter.depth + "km<br>規模(M) " + json[0].earthquake.hypocenter.magnitude + "<br>津波の有無 " + tsunami;
           }
-          else {
-          info = document.getElementById("info"); info.innerHTML = "<br>発生時刻 " + json[0].earthquake.time.split('/').join('月').split(' ').join('日').slice(5) + "<br>最大震度 " + maxint + "<br>震源地 " + json[0].earthquake.hypocenter.name + "<br>深さ " + json[0].earthquake.hypocenter.depth + "km<br>規模(M) " + json[0].earthquake.hypocenter.magnitude;
-          }
-            var myIcon = L.icon({
+          var myIcon = L.icon({
             iconUrl: 'icon.png',
             iconSize: [30, 30]
-          }); 
+          });
           L.marker([json[0].earthquake.hypocenter.latitude, json[0].earthquake.hypocenter.longitude], {
             icon: myIcon
           }).addTo(map);
@@ -304,7 +331,7 @@ attribution: '&copy; <a href="https://www.p2pquake.net/">P2P地震情報</a> <a 
                 weight: 0
               }).bindPopup("<span class=font_size>" + name[name.findIndex(item => item === addr2) + 1] + "</span>").addTo(map);
             } else {}
+          });
       });
-    });
-}
+  }
 }
