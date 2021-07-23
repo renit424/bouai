@@ -29,7 +29,7 @@
             json.onreadystatechange = function() {		  // XMLHttpRequest オブジェクトの状態が変化した際に呼び出されるイベントハンドラ
             if(json.readyState == 4 && json.status == 200){ // サーバーからのレスポンスが完了し、かつ、通信が正常に終了した場合
             //alert(json.responseText);		          // 取得した JSON ファイルの中身を表示
-            console.log(json[0].center);
+            console.log(json[0].center[0]);
           }
           };
         json.open("GET", url, false); // HTTPメソッドとアクセスするサーバーの　URL　を指定
