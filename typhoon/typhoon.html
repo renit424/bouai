@@ -28,7 +28,7 @@
           var json = new XMLHttpRequest();		  // XMLHttpRequest オブジェクトを生成する
             json.onreadystatechange = function() {		  // XMLHttpRequest オブジェクトの状態が変化した際に呼び出されるイベントハンドラ
             if(json.readyState == 4 && json.status == 200){ // サーバーからのレスポンスが完了し、かつ、通信が正常に終了した場合
-            alert(json.responseText);		          // 取得した JSON ファイルの中身を表示
+            //alert(json.responseText);		          // 取得した JSON ファイルの中身を表示
           }
           };
         json.open("GET", url, false); // HTTPメソッドとアクセスするサーバーの　URL　を指定
@@ -119,7 +119,7 @@
     //           L.marker([json2[1].lat, json2[1].long]).bindPopup("台風名(名称) 台風第" +json.display_name.slice(6)+"<br>日時 "+json2[1].forecast_date.slice(0,-3)+"<br>中心位置 "+parseFloat(json2[1].lat)+ parseFloat(json2[1].long)+"<br>予報円の半径 "+json2[1].radius_km+"<br>分類 "+json2[1].clabel).addTo(map);
     //           L.marker([json2[0].lat, json2[0].long]).bindPopup("台風名(名称) 台風第" +json.display_name.slice(6)+"<br>日時 "+json2[0].forecast_date.slice(0,-3)+"<br>中心位置 "+parseFloat(json2[0].lat)+ parseFloat(json2[0].long)+"<br>予報円の半径 "+json2[0].radius_km+"<br>分類 "+json2[0].clabel).addTo(map);
     //         }
-    }
+    //}
     }
   </script>
   </head>
