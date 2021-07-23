@@ -33,7 +33,6 @@
           };
         json.open("GET", url, false); // HTTPメソッドとアクセスするサーバーの　URL　を指定
         json.send(null);		
-          console.log(json['track']['preTyphoon'][0][0]);
             var len = json['track']['preTyphoon'].length-1;
             for(var i=0; i<len; i++) {
           var myIcon = L.icon({
