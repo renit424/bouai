@@ -29,6 +29,7 @@
             json.onreadystatechange = function() {		  // XMLHttpRequest オブジェクトの状態が変化した際に呼び出されるイベントハンドラ
             if(json.readyState == 4 && json.status == 200){ // サーバーからのレスポンスが完了し、かつ、通信が正常に終了した場合
             //alert(json.responseText);		          // 取得した JSON ファイルの中身を表示
+            console.log(parseFloat(json.center));
           }
           };
         json.open("GET", url, false); // HTTPメソッドとアクセスするサーバーの　URL　を指定
@@ -42,6 +43,7 @@
           var marker = L.marker([parseFloat(json.center)], {
             icon: myIcon
           }).addTo(map);
+          map.setView([json.center], 6);
           //marker.bindPopup("台風名(名称) 台風第" + json.typhoonNumber + "<br>中心位置 " + "N/"  + "E<br>中心気圧 " + "hPa<br>最大風速 "  + "m/s (100kt)").openPopup();
           //L.polyline([[parseFloat(json.track.preTyphoon[i+1]), parseFloat(json.track[i+1].long)],[parseFloat(json.track[i].lat), parseFloat(json.track[i].long)]],{ "color": "red", "weight": 2, "opacity": 1.0})
           //.addTo(map);
