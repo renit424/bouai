@@ -42,7 +42,7 @@
           var marker = L.marker([parseFloat(json.center)], {
             icon: myIcon
           }).addTo(map)
-          marker.bindPopup("台風名(名称) 台風第" + json.typhoonNumber.slice(6) + "<br>中心位置 " + "N/"  + "E<br>中心気圧 " + "hPa<br>最大風速 "  + "m/s (100kt)").openPopup();
+          //marker.bindPopup("台風名(名称) 台風第" + json.typhoonNumber + "<br>中心位置 " + "N/"  + "E<br>中心気圧 " + "hPa<br>最大風速 "  + "m/s (100kt)").openPopup();
           //L.polyline([[parseFloat(json.track.preTyphoon[i+1]), parseFloat(json.track[i+1].long)],[parseFloat(json.track[i].lat), parseFloat(json.track[i].long)]],{ "color": "red", "weight": 2, "opacity": 1.0})
           //.addTo(map);
         }
