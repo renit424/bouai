@@ -24,7 +24,7 @@
         Typhoon_01();
         function Typhoon_01() {
           var Line_W = 2;
-          const url = 'https://agora.ex.nii.ac.jp/digital-typhoon/json/wnp/202106.ja.json';
+          const url = 'https://www.jma.go.jp/bosai/typhoon/data/TC2109/forecast.json';
           var json = new XMLHttpRequest();		  // XMLHttpRequest オブジェクトを生成する
             json.onreadystatechange = function() {		  // XMLHttpRequest オブジェクトの状態が変化した際に呼び出されるイベントハンドラ
             if(json.readyState == 4 && json.status == 200){ // サーバーからのレスポンスが完了し、かつ、通信が正常に終了した場合
@@ -33,19 +33,19 @@
           };
         json.open("GET", url, false); // HTTPメソッドとアクセスするサーバーの　URL　を指定
         json.send(null);		
-          
-            var len = json['track'].length-1;
+          console.log(json['track']['preTyphoon']);
+            var len = json['track']['preTyphoon'].length-1;
             for(var i=0; i<len; i++) {
           var myIcon = L.icon({
             iconUrl: 'https://upload.wikimedia.org/wikipedia/commons/thumb/4/49/Multiplication_Sign.svg/1024px-Multiplication_Sign.svg.png',
             iconSize: [20, 20]
           })
-          var marker = L.marker([parseFloat(json.track[i+1].lat), parseFloat(json.track[i+1].long)], {
+          var marker = L.marker([parseFloat(json.track.preTyphoon[i+1])], {
             icon: myIcon
           }).addTo(map)
-          marker.bindPopup("台風名(名称) 台風第" + json.display_name.slice(6) + "<br>日時 " + json.track[i+1].date.slice(0,-3) + "<br>中心位置 " + parseFloat(json.track[i+1].lat) + "N/" + parseFloat(json.track[i+1].long) + "E<br>中心気圧 " + json.track[i+1].p + "hPa<br>最大風速 " + json.track[i+1].w_ms + "m/s (100kt)").openPopup();
-          L.polyline([[parseFloat(json.track[i+1].lat), parseFloat(json.track[i+1].long)],[parseFloat(json.track[i].lat), parseFloat(json.track[i].long)]],{ "color": "red", "weight": 2, "opacity": 1.0})
-          .addTo(map);
+          //marker.bindPopup("台風名(名称) 台風第" + json.typhoonNumber.slice(6) + "<br>中心位置 " + "N/"  + "E<br>中心気圧 " + "hPa<br>最大風速 "  + "m/s (100kt)").openPopup();
+          //L.polyline([[parseFloat(json.track.preTyphoon[i+1]), parseFloat(json.track[i+1].long)],[parseFloat(json.track[i].lat), parseFloat(json.track[i].long)]],{ "color": "red", "weight": 2, "opacity": 1.0})
+          //.addTo(map);
         }
           var Circle_shape = new Array();
           var Circle_shape_LAT = new Array();
