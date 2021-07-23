@@ -29,7 +29,7 @@
             json.onreadystatechange = function() {		  // XMLHttpRequest オブジェクトの状態が変化した際に呼び出されるイベントハンドラ
             if(json.readyState == 4 && json.status == 200){ // サーバーからのレスポンスが完了し、かつ、通信が正常に終了した場合
             //alert(json.responseText);		          // 取得した JSON ファイルの中身を表示
-            console.log(parseFloat(json.center));
+            console.log(json.center);
           }
           };
         json.open("GET", url, false); // HTTPメソッドとアクセスするサーバーの　URL　を指定
@@ -40,7 +40,7 @@
             iconUrl: 'https://upload.wikimedia.org/wikipedia/commons/thumb/4/49/Multiplication_Sign.svg/1024px-Multiplication_Sign.svg.png',
             iconSize: [20, 20]
           })
-          var marker = L.marker([parseFloat(json.center)], {
+          var marker = L.marker([json.center], {
             icon: myIcon
           }).addTo(map);
           map.setView([json.center], 6);
