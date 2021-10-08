@@ -64,7 +64,7 @@ attribution: '&copy; <a href="https://www.p2pquake.net/">P2P地震情報</a> <a 
                 return div;
               };
               legend.addTo(map);
-            }
+            } else {}
               if (maxScale == "20") { //震度2
               maxint = "2"
               var legend = L.control({
@@ -82,7 +82,7 @@ attribution: '&copy; <a href="https://www.p2pquake.net/">P2P地震情報</a> <a 
                 return div;
               };
               legend.addTo(map);
-            } 
+            } else {}
               if (maxScale == "30") { //震度3
               maxint = "3"
               var legend = L.control({
@@ -100,7 +100,7 @@ attribution: '&copy; <a href="https://www.p2pquake.net/">P2P地震情報</a> <a 
                 return div;
               };
               legend.addTo(map);
-            } 
+            } else {}
               if (maxScale == "40") { //震度4
               maxint = "4"
               var legend = L.control({
@@ -118,7 +118,8 @@ attribution: '&copy; <a href="https://www.p2pquake.net/">P2P地震情報</a> <a 
                 return div;
               };
               legend.addTo(map);
-            } else if (maxScale == "45") { //震度5-
+            } else {}
+              if (maxScale == "45") { //震度5-
               maxint = "5弱"
               var legend = L.control({
                 position: "bottomright"
@@ -135,7 +136,7 @@ attribution: '&copy; <a href="https://www.p2pquake.net/">P2P地震情報</a> <a 
                 return div;
               };
               legend.addTo(map);
-            }
+            } else {}
               if (maxScale == "50") { //震度5+
               maxint = "5強"
               var legend = L.control({
@@ -153,7 +154,7 @@ attribution: '&copy; <a href="https://www.p2pquake.net/">P2P地震情報</a> <a 
                 return div;
               };
               legend.addTo(map);
-            } 
+            } else {}
               if (maxScale == "55") { //震度6-
               maxint = "6弱"
               var legend = L.control({
@@ -171,7 +172,7 @@ attribution: '&copy; <a href="https://www.p2pquake.net/">P2P地震情報</a> <a 
                 return div;
               };
               legend.addTo(map);
-            } 
+            } else {}
               if (maxScale == "60") { //震度6+
               maxint = "6強"
               var legend = L.control({
@@ -189,7 +190,7 @@ attribution: '&copy; <a href="https://www.p2pquake.net/">P2P地震情報</a> <a 
                 return div;
               };
               legend.addTo(map);
-            } 
+            } else {}
               if (maxScale == "70") { //震度7
               maxint = "7"
               var legend = L.control({
