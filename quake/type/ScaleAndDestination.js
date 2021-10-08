@@ -14,7 +14,7 @@ L.control.scale({
 L.control.zoom({
   position: 'topright'
 }).addTo(map);
-const url = 'https://api.renitapps.com/response_1633668243655.json';
+const url = 'https://api.renitapps.com/quake.php';
 fetch(url).then(function (response) {
 return response.json();
 }).then(function (json) {
