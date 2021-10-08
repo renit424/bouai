@@ -64,7 +64,8 @@ attribution: '&copy; <a href="https://www.p2pquake.net/">P2P地震情報</a> <a 
                 return div;
               };
               legend.addTo(map);
-            } else if (maxScale == "20") { //震度2
+            }
+              if (maxScale == "20") { //震度2
               maxint = "2"
               var legend = L.control({
                 position: "bottomright"
@@ -81,7 +82,8 @@ attribution: '&copy; <a href="https://www.p2pquake.net/">P2P地震情報</a> <a 
                 return div;
               };
               legend.addTo(map);
-            } else if (maxScale == "30") { //震度3
+            } 
+              if (maxScale == "30") { //震度3
               maxint = "3"
               var legend = L.control({
                 position: "bottomright"
@@ -98,7 +100,8 @@ attribution: '&copy; <a href="https://www.p2pquake.net/">P2P地震情報</a> <a 
                 return div;
               };
               legend.addTo(map);
-            } else if (maxScale == "40") { //震度4
+            } 
+              if (maxScale == "40") { //震度4
               maxint = "4"
               var legend = L.control({
                 position: "bottomright"
@@ -132,7 +135,8 @@ attribution: '&copy; <a href="https://www.p2pquake.net/">P2P地震情報</a> <a 
                 return div;
               };
               legend.addTo(map);
-            } else if (maxScale == "50") { //震度5+
+            }
+              if (maxScale == "50") { //震度5+
               maxint = "5強"
               var legend = L.control({
                 position: "bottomright"
@@ -149,7 +153,8 @@ attribution: '&copy; <a href="https://www.p2pquake.net/">P2P地震情報</a> <a 
                 return div;
               };
               legend.addTo(map);
-            } else if (maxScale == "55") { //震度6-
+            } 
+              if (maxScale == "55") { //震度6-
               maxint = "6弱"
               var legend = L.control({
                 position: "bottomright"
@@ -166,7 +171,8 @@ attribution: '&copy; <a href="https://www.p2pquake.net/">P2P地震情報</a> <a 
                 return div;
               };
               legend.addTo(map);
-            } else if (maxScale == "60") { //震度6+
+            } 
+              if (maxScale == "60") { //震度6+
               maxint = "6強"
               var legend = L.control({
                 position: "bottomright"
@@ -183,7 +189,8 @@ attribution: '&copy; <a href="https://www.p2pquake.net/">P2P地震情報</a> <a 
                 return div;
               };
               legend.addTo(map);
-            } else if (maxScale == "70") { //震度7
+            } 
+              if (maxScale == "70") { //震度7
               maxint = "7"
               var legend = L.control({
                 position: "bottomright"
@@ -261,7 +268,8 @@ attribution: '&copy; <a href="https://www.p2pquake.net/">P2P地震情報</a> <a 
                   fillOpacity: 1.0,
                   weight: 0
                 }).bindPopup("<span class=font_size>" + name[name.findIndex(item => item === addr2) + 1] + "</span>").addTo(map);
-              } else if (result2[i] == 20) { //震度2
+              } 
+                if (result2[i] == 20) { //震度2
                 var circle = L.circle([lat[name.findIndex(item => item === addr2)], lon[name.findIndex(item => item === addr2)]], {
                   radius: 2400,
                   color: "#273096",
@@ -269,7 +277,8 @@ attribution: '&copy; <a href="https://www.p2pquake.net/">P2P地震情報</a> <a 
                   fillOpacity: 1.0,
                   weight: 0
                 }).bindPopup("<span class=font_size>" + name[name.findIndex(item => item === addr2) + 1] + "</span>").addTo(map);
-              } else if (result2[i] == 30) { //震度3
+              } 
+                if (result2[i] == 30) { //震度3
                 var circle = L.circle([lat[name.findIndex(item => item === addr2)], lon[name.findIndex(item => item === addr2)]], {
                   radius: 2400,
                   color: "#17B978",
@@ -277,7 +286,8 @@ attribution: '&copy; <a href="https://www.p2pquake.net/">P2P地震情報</a> <a 
                   fillOpacity: 1.0,
                   weight: 0
                 }).bindPopup("<span class=font_size>" + name[name.findIndex(item => item === addr2) + 1] + "</span>").addTo(map);
-              } else if (result2[i] == 40) { //震度4
+              } 
+                if (result2[i] == 40) { //震度4
                 var circle = L.circle([lat[name.findIndex(item => item === addr2)], lon[name.findIndex(item => item === addr2)]], {
                   radius: 2400,
                   color: "#F0CC24",
@@ -285,7 +295,8 @@ attribution: '&copy; <a href="https://www.p2pquake.net/">P2P地震情報</a> <a 
                   fillOpacity: 1.0,
                   weight: 0
                 }).bindPopup("<span class=font_size>" + name[name.findIndex(item => item === addr2) + 1] + "</span>").addTo(map);
-              } else if (result2[i] == 45) { //震度5-
+              }
+                if (result2[i] == 45) { //震度5-
                 var circle = L.circle([lat[name.findIndex(item => item === addr2)], lon[name.findIndex(item => item === addr2)]], {
                   radius: 2400,
                   color: "#FE9A05",
@@ -293,7 +304,8 @@ attribution: '&copy; <a href="https://www.p2pquake.net/">P2P地震情報</a> <a 
                   fillOpacity: 1.0,
                   weight: 0
                 }).bindPopup("<span class=font_size>" + name[name.findIndex(item => item === addr2) + 1] + "</span>").addTo(map);
-              } else if (result2[i] == 50) { //震度5+
+              } 
+                if (result2[i] == 50) { //震度5+
                 var circle = L.circle([lat[name.findIndex(item => item === addr2)], lon[name.findIndex(item => item === addr2)]], {
                   radius: 2400,
                   color: "#FF4904",
@@ -301,7 +313,8 @@ attribution: '&copy; <a href="https://www.p2pquake.net/">P2P地震情報</a> <a 
                   fillOpacity: 1.0,
                   weight: 0
                 }).bindPopup("<span class=font_size>" + name[name.findIndex(item => item === addr2) + 1] + "</span>").addTo(map);
-              } else if (result2[i] == 55) { //震度6-
+              }
+                if (result2[i] == 55) { //震度6-
                 var circle = L.circle([lat[name.findIndex(item => item === addr2)], lon[name.findIndex(item => item === addr2)]], {
                   radius: 2400,
                   color: "#FF0404",
@@ -309,7 +322,8 @@ attribution: '&copy; <a href="https://www.p2pquake.net/">P2P地震情報</a> <a 
                   fillOpacity: 1.0,
                   weight: 0
                 }).bindPopup("<span class=font_size>" + name[name.findIndex(item => item === addr2) + 1] + "</span>").addTo(map);
-              } else if (result2[i] == 60) { //震度6+
+              }
+                if (result2[i] == 60) { //震度6+
                 var circle = L.circle([lat[name.findIndex(item => item === addr2)], lon[name.findIndex(item => item === addr2)]], {
                   radius: 2400,
                   color: "#FF0254",
@@ -317,7 +331,8 @@ attribution: '&copy; <a href="https://www.p2pquake.net/">P2P地震情報</a> <a 
                   fillOpacity: 1.0,
                   weight: 0
                 }).bindPopup("<span class=font_size>" + name[name.findIndex(item => item === addr2) + 1] + "</span>").addTo(map);
-              } else if (result2[i] == 70) { //震度7
+              }
+                if (result2[i] == 70) { //震度7
                 var circle = L.circle([lat[name.findIndex(item => item === addr2)], lon[name.findIndex(item => item === addr2)]], {
                   radius: 2400,
                   color: "#C200D2",
