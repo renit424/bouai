@@ -28,7 +28,7 @@ attribution: '&copy; <a href="https://www.p2pquake.net/">P2P地震情報</a> <a 
     const url = 'https://api.renitapps.com/quake.php';
     //const url = 'https://bousai.renitapps.com/quake/test/20201107Ogasawara.json';
     //const url = 'quake2.json';
-    const url2 = 'https://www.data.jma.go.jp/svd/eqev/data/intens-st/stations.json';
+    const url2 = 'https://api.renitapps.com/v1/data/intens-st/';
     fetch(url).then(function (response) {
       return response.json();
     }).then(function (json) {
