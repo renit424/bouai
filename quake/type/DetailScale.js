@@ -35,11 +35,11 @@ attribution: '&copy; <a href="https://www.p2pquake.net/">P2P地震情報</a> <a 
         fetch(url2).then(function (response) {
           return response.json();
         }).then(function (json2) {
-          len2 = Object.keys(json2['items']).length - 1;
+          len2 = Object.keys(json2).length - 1;
           for (var i = 0; i <= len2; i++) {
-            lat.push(json2.items[i].lat);
-            lon.push(json2.items[i].lon);
-            name.push(json2.items[i].name);
+            lat.push(json2[i].lat);
+            lon.push(json2[i].lon);
+            name.push(json2[i].name);
           }
           map.setView([json[0].earthquake.hypocenter.latitude, json[0].earthquake.hypocenter.longitude], 9);
           var issue = json[0].issue.type;
